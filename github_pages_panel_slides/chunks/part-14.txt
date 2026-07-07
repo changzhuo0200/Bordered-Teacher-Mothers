@@ -1,0 +1,64 @@
+", and "suitable for women" — patience, praise, and empathy are work that requires institutional recognition.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="idx">*<small>Restructuring</small></div>
+          <div>
+            <h4>begins the moment</h4>
+            <p>naturalised care labour becomes something that can be <em>discussed</em>, <em>named</em>, and <em>redistributed</em>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 15 / 18</span></footer>
+  </section>
+
+  <!-- 15 · CONTRIBUTIONS + LIMITATIONS -->
+  <section class="slide">
+    <div class="label">06 · Contributions &amp; Limitations</div>
+    <div class="page-num">16 / 18</div>
+    <div class="content" style="padding-top:clamp(60px,6vw,100px)">
+      <div class="two-col">
+        <div>
+          <h3>Contributions</h3>
+          <div class="keyword-list">
+            <div class="kw"><div class="term">Reframe</div><div class="val">The teacher-mother is an institutionally bordered position, not a private role conflict.</div></div>
+            <div class="kw"><div class="term">Name</div><div class="val">Affective bordering names how patience, praise, and self-restraint are pulled from women teachers as unpaid work.</div></div>
+            <div class="kw"><div class="term">Compare</div><div class="val">A situated Chinese case enters dialogue with Korean and Indonesian feminist scholarship.<span>Park (2007); Adriany (2018)</span></div></div>
+            <div class="kw"><div class="term">Redistribute</div><div class="val">Responsibility must be redrawn across school, family, and society.</div></div>
+          </div>
+        </div>
+        <div>
+          <h3>Limits &amp; Future</h3>
+          <div class="keyword-list">
+            <div class="kw"><div class="term">Sample</div><div class="val">Only three teachers in Jiangsu cannot represent regional and structural variation.</div></div>
+            <div class="kw"><div class="term">Method</div><div class="val">The family field relies on self-report, not in-home observation.</div></div>
+            <div class="kw"><div class="term">Scope</div><div class="val">Sino-Korean and Sino-Japanese comparison has not yet been developed.</div></div>
+            <div class="kw"><div class="term">Next</div><div class="val">Affective bordering can extend to other feminised care professions.<span>nursing · ECE · social work</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 16 / 18</span></footer>
+  </section>
+
+  <!-- 16 · REFERENCES -->
+  <section class="slide refs-page">
+    <div class="label">07 · References</div>
+    <div class="page-num">17 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">References</h1>
+      <div class="slide-sub">Works cited in this presentation</div>
+    </div>
+    <div class="content">
+      <div class="refs-list">
+        <p>Acker, J. (1990). Hierarchies, jobs, bodies: A theory of gendered organizations. <em>Gender &amp; Society, 4</em>(2), 139–158.</p>
+        <p>Acker, J. (2006). Inequality regimes: Gender, class, and race in organizations. <em>Gender &amp; Society, 20</em>(4), 441–464.</p>
+        <p>Adriany, V. (2018). Neoliberalism and practices of early childhood education in Asia. <em>Policy Futures in Education, 16</em>(1), 3–10.</p>
+        <p>Braun, V., &amp; Clarke, V. (2006). Using thematic analysis in psychology. <em>Qualitative Research in Psychology, 3</em>(2), 77–101.</p>
+        <p>Fraser, N. (2016). Contradictions of capital and care. <em>New Left Review, 100</em>, 99–117.</p>
+        <p>Hesse-Biber, S. N. (Ed.). (2014). <em>Feminist research practice: A primer</em> (2nd ed.). SAGE.</p>
+        <p>Hochschild, A. R. (2012). <em>The managed heart: Commercialization of human feeling</em> (Updated ed.). University of California Press. (Original 1983)</p>
+        <p>Hochschild, A. R., &amp; Machung, A. (2012). <em>The second shift: Working families and the revolution at home</em> (Rev. ed.). Penguin. (Original 1989)</p>
+        <p>Noddings, N. (2013). <em>Caring: A relational approach to ethics and moral education</em> (2nd ed.). University of California Press. (Original 1984)</p>
+        <p>Ong, A. (2006). <em>Neoliberalism as exception: Mutations in citizenship and sovereignty</em>. Duke Unive

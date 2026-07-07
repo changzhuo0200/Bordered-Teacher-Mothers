@@ -1,0 +1,104 @@
+rsity Press.</p>
+        <p>Park, S. J. (2007). Educational manager mothers: South Korea's neoliberal transformation. <em>Korea Journal, 47</em>(3), 186–213.</p>
+        <p>Parreñas, R. S. (2015). <em>Servants of globalization: Migration and domestic work</em> (2nd ed.). Stanford University Press.</p>
+        <p>Riessman, C. K. (2008). <em>Narrative methods for the human sciences</em>. SAGE.</p>
+        <p>Stake, R. E. (1995). <em>The art of case study research</em>. SAGE.</p>
+        <p>Wang, L., &amp; Hamid, M. O. (2024). The transformation of neoliberalism: A critical analysis of shadow education governance policy in China. <em>International Journal of Educational Research, 127</em>, 102422.</p>
+        <p>Yuval-Davis, N., Wemyss, G., &amp; Cassidy, K. (2019). <em>Bordering</em>. Polity.</p>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 17 / 18</span></footer>
+  </section>
+
+  <!-- 17 · THANKS / Q&A -->
+  <section class="slide qa">
+    <div class="qa-head">
+      <div class="logo text-logo" aria-label="ACWS">ASIAN CENTER<br>FOR WOMEN'S STUDIES <span>B/ordering the Global</span></div>
+      <div class="meta">
+        <div class="head-row">ACWS 2026 &nbsp;·&nbsp; Panel 10-4</div>
+        <div class="sub-row">Thank you &nbsp;·&nbsp; Questions &amp; Comments Welcome</div>
+      </div>
+    </div>
+    <a class="back-toc" data-target="1" href="#s1">Contents</a>
+    <div class="qa-main">
+      <h1>Thank&nbsp;you.</h1>
+      <div class="qa-sub">Questions &amp; comments welcome.</div>
+      <div class="qa-rule"></div>
+      <div class="qa-meta"><strong>Zhuo Chang</strong> &nbsp; · &nbsp; MSc, Digital and Social Science &nbsp; · &nbsp; Department of Education, University of Oxford</div>
+    </div>
+    <footer><span></span><span>18 / 18</span></footer>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="Previous">‹</button>
+  <span class="idx" id="idx">1 / 18</span>
+  <button id="next" aria-label="Next">›</button>
+  <button class="overview-btn" id="ovBtn" aria-label="Overview">Esc · All</button>
+</div>
+<div class="overview-hint">Overview · click any slide to open · press Esc to close</div>
+
+<script>
+  const deck = document.getElementById('deck');
+  const slides = Array.from(deck.querySelectorAll('.slide'));
+  const idxEl = document.getElementById('idx');
+  const N = slides.length;
+  let cur = 0;
+
+  // ── Section map (0-indexed slide ranges) ──
+  const sections = [
+    { num:'01', label:'Background & Questions', start:2,  end:3  },
+    { num:'02', label:'Methodology',            start:4,  end:5  },
+    { num:'03', label:'Framework',              start:6,  end:8  },
+    { num:'04', label:'Findings',               start:9,  end:12 },
+    { num:'05', label:'Conclusion',             start:13, end:14 },
+    { num:'06', label:'Contributions',          start:15, end:15 },
+    { num:'07', label:'References',             start:16, end:16 },
+  ];
+
+  // ── Inject progress-nav into each content slide ──
+  slides.forEach((slide, i) => {
+    const secIdx = sections.findIndex(s => i >= s.start && i <= s.end);
+    if (secIdx < 0) return;
+    slide.classList.add('has-nav');
+    const nav = document.createElement('div');
+    nav.className = 'progress-nav';
+    sections.forEach((s, si) => {
+      const a = document.createElement('a');
+      a.textContent = s.num;
+      a.title = s.label;
+      a.href = '#s' + s.start;
+      a.dataset.target = s.start;
+      if (si === secIdx) a.classList.add('current');
+      nav.appendChild(a);
+      if (si < sections.length - 1) {
+        const sep = document.createElement('span');
+        sep.className = 'sep';
+        sep.textContent = '·';
+        nav.appendChild(sep);
+      }
+    });
+    slide.appendChild(nav);
+  });
+
+  function go(n){
+    if (document.body.classList.contains('overview')) {
+      document.body.classList.remove('overview');
+    }
+    cur = Math.max(0, Math.min(N-1, n));
+    deck.style.transform = `translateX(${-cur * 100}vw)`;
+    idxEl.textContent = `${cur+1} / ${N}`;
+    // Re-trigger entry animations
+    slides.forEach(s => s.classList.remove('active'));
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => slides[cur].classList.add('active'));
+    });
+  }
+
+  // ── Wire all data-target links (TOC, progress-nav, back-toc) ──
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-target]');
+    if (!t) return;
+    e.preventDefault();
+    go(parseInt(t.

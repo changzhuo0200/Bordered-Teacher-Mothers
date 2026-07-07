@@ -1,0 +1,93 @@
+      <span></span>
+      <span>01 / 18</span>
+    </footer>
+  </section>
+
+  <!-- 02 · CONTENTS -->
+  <section class="slide contents">
+    <div class="label">Contents</div>
+    <div class="page-num">02 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Contents</h1>
+    </div>
+    <div class="content">
+      <ol>
+        <li data-target="2"><span class="num">01</span><span class="txt">Research Background &amp; Questions</span></li>
+        <li data-target="4"><span class="num">02</span><span class="txt">Research Methodology</span></li>
+        <li data-target="6"><span class="num">03</span><span class="txt">Analytical Framework</span></li>
+        <li data-target="9"><span class="num">04</span><span class="txt">Empirical Findings</span></li>
+        <li data-target="13"><span class="num">05</span><span class="txt">Discussion &amp; Conclusion</span></li>
+        <li data-target="14"><span class="num">06</span><span class="txt">Contributions &amp; Limitations</span></li>
+      </ol>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026</span></footer>
+  </section>
+
+  <!-- 03 · BACKGROUND -->
+  <section class="slide">
+    <div class="label">01 · Research Background</div>
+    <div class="page-num">03 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">A Feminised Profession Under Pressure</h1>
+      <div class="slide-sub">Structural · Cultural · Policy</div>
+    </div>
+    <div class="content">
+      <div class="stack-3">
+        <div class="row">
+          <div class="k">Structural<small>Reality</small></div>
+          <div class="v"><em>~70%</em> women teachers in compulsory education; <em>74.48%</em> in primary schools (MoE 2023; ~75% in 2024). Underrepresented in leadership and compensation.</div>
+        </div>
+        <div class="row">
+          <div class="k">Cultural<small>Constraint</small></div>
+          <div class="v">The profession is <em>maternalised</em> — "stability", "long vacations" naturalise the gendered division of labour.</div>
+        </div>
+        <div class="row">
+          <div class="k">Policy<small>Impetus</small></div>
+          <div class="v">Post-<em>Double Reduction</em>: non-teaching tasks ↑ and role conflicts intensified.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 03 / 18</span></footer>
+  </section>
+
+  <!-- 04 · RESEARCH QUESTIONS -->
+  <section class="slide">
+    <div class="label">01 · Research Questions</div>
+    <div class="page-num">04 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Research Questions</h1>
+      <div class="slide-sub">One core question &nbsp;·&nbsp; three sub-questions</div>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(18px,2vw,30px)">
+      <div class="center-statement" style="margin-bottom:clamp(36px,4.5vw,64px);max-width:1220px;align-items:flex-start;text-align:left;gap:0">
+        <div class="lead" style="font-size:clamp(24px,2.2vw,36px);line-height:1.24">
+          How are women primary teachers placed at a <em>bordered position</em> among public teaching, private mothering, and social reproduction — and who bears the institutional cost?
+        </div>
+      </div>
+      <div class="q-grid">
+        <div class="q">
+          <div class="qn">Q1 · Institutional</div>
+          <h3>School–Family Borders</h3>
+          <p>How are responsibility borders moved through collaboration, tutoring, parent communication, and evaluation?</p>
+        </div>
+        <div class="q">
+          <div class="qn">Q2 · Reproductive</div>
+          <h3>Time · Body · Kinship</h3>
+          <p>Once pressure enters the family, how is it redistributed along gendered and intergenerational lines?</p>
+        </div>
+        <div class="q">
+          <div class="qn">Q3 · Affective</div>
+          <h3>Naturalised Emotion</h3>
+          <p>How are patience, empathy, and self-restraint converted into unpaid emotional labour?</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 04 / 18</span></footer>
+  </section>
+
+  <!-- 05 · METHODS -->
+  <section class="slide">
+    <div class="label">02 · Research Methodology</div>
+    <div class="page-num">05 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Feminist Qualitative Case + Narrative Inqui

@@ -1,0 +1,84 @@
+class="attr">Teacher Yu</div>
+            <div class="desc">Praise as <em style="color:var(--accent);font-style:normal;font-weight:600">sustained linguistic labour</em>.</div>
+          </div>
+        </div>
+        <div class="q-row">
+          <div class="q-body">
+            <blockquote>You can't have negative emotions… Most importantly, it protects yourself.</blockquote>
+            <div class="zh-original">但是不能有负面的情绪，不能带着情绪去工作……不能带有负面情绪，这样最重要的是保护自己。</div>
+          </div>
+          <div class="meta">
+            <div class="attr">Teacher Gong</div>
+            <div class="desc">Emotional control as <em style="color:var(--accent);font-style:normal;font-weight:600">professional norm and self-protection</em>.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 13 / 18</span></footer>
+  </section>
+
+  <!-- 14 · CONCLUSION -->
+  <section class="slide">
+    <div class="label">05 · Discussion &amp; Conclusion</div>
+    <div class="page-num">14 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Responses to Q1 · Q2 · Q3</h1>
+      <div class="slide-sub">Three chapters answering the three sub-questions.</div>
+    </div>
+    <div class="content">
+      <div class="conclusion">
+        <div class="item">
+          <div class="idx">Q1<small>Institutional</small></div>
+          <div>
+            <h4>Ch.1 · School–Family Borders</h4>
+            <p>School–family collaboration is both cooperation and a conduit through which educational responsibility descends onto teachers' individual time and emotional labour. Teachers are pushed into the roles of developmental judge, parent emotion coordinator, and after-school compensator — silently, and without being named as expansion.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="idx">Q2<small>Reproductive</small></div>
+          <div>
+            <h4>Ch.2 · Time · Body · Kinship</h4>
+            <p>Home is not a private space outside the institution but where social reproduction continues to operate. Pressure is absorbed at three registers — time, body, and division of labour — producing a hidden care infrastructure embedded in the mother–grandmother chain.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="idx">Q3<small>Affective</small></div>
+          <div>
+            <h4>Ch.3 · Naturalised Emotion</h4>
+            <p>Once schools take praise, encouragement, and empathy as women teachers' "natural" patience, professional labour is converted into unpaid emotional service. Teacher-mothers respond through limited, negotiable withdrawals — refusing exchange of evaluation, and reframing "love" as work that requires institutional recognition.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 14 / 18</span></footer>
+  </section>
+
+  <!-- 15 · CORE ANSWER · Redrawing the Border -->
+  <section class="slide">
+    <div class="label">05 · The Core Answer</div>
+    <div class="page-num">15 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Redrawing the Border</h1>
+      <div class="slide-sub">The teacher-mother's predicament is not private role conflict — it is an institutionally <em style="font-style:normal;color:var(--accent);font-weight:600">bordered position</em>.</div>
+    </div>
+    <div class="content">
+      <div class="conclusion">
+        <div class="item">
+          <div class="idx">i.<small>Schools</small></div>
+          <div>
+            <h4>cannot <em>transfer</em></h4>
+            <p>after-school tutoring, school–family emotional coordination, and family-education compensation onto individual teachers under the discourse of "obligation".</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="idx">ii.<small>Families</small></div>
+          <div>
+            <h4>cannot <em>default</em></h4>
+            <p>childrearing, homework companionship, housework, and emotional support to women — nor treat the grandmother–mother–child chain as invisible infrastructure.</p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="idx">iii.<small>Society &amp; Policy</small></div>
+          <div>
+            <h4>cannot <em>naturalise</em></h4>
+            <p>labour value behind the rhetoric of "dedication", "love

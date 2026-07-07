@@ -1,0 +1,83 @@
+){animation-delay:.62s}
+
+  .slide.active .q-grid .q{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .q-grid .q:nth-child(1){animation-delay:.35s}
+  .slide.active .q-grid .q:nth-child(2){animation-delay:.5s}
+  .slide.active .q-grid .q:nth-child(3){animation-delay:.65s}
+
+  .slide.active .methods .m{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .methods .m:nth-child(1){animation-delay:.32s}
+  .slide.active .methods .m:nth-child(2){animation-delay:.42s}
+  .slide.active .methods .m:nth-child(3){animation-delay:.52s}
+  .slide.active .methods .m:nth-child(4){animation-delay:.62s}
+
+  .slide.active .participants .p{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .participants .p:nth-child(1){animation-delay:.32s}
+  .slide.active .participants .p:nth-child(2){animation-delay:.47s}
+  .slide.active .participants .p:nth-child(3){animation-delay:.62s}
+
+  .slide.active .framework-3 .mech{opacity:0;animation:fadeInUp .55s both ease-out}
+  .slide.active .framework-3 .mech:nth-child(1){animation-delay:.32s}
+  .slide.active .framework-3 .mech:nth-child(2){animation-delay:.47s}
+  .slide.active .framework-3 .mech:nth-child(3){animation-delay:.62s}
+  .slide.active .framework-3 .converge{opacity:0;animation:scaleIn .5s .82s both ease-out}
+
+  .slide.active .care-chain .cnode{opacity:0;animation:fadeInUp .4s both ease-out}
+  .slide.active .care-chain .carrow{opacity:0;animation:fadeIn .4s both ease-out}
+  .slide.active .care-chain > *:nth-child(1){animation-delay:.4s}
+  .slide.active .care-chain > *:nth-child(2){animation-delay:.55s}
+  .slide.active .care-chain > *:nth-child(3){animation-delay:.7s}
+  .slide.active .care-chain > *:nth-child(4){animation-delay:.85s}
+  .slide.active .care-chain > *:nth-child(5){animation-delay:1s}
+
+  .slide.active .flow .node,.slide.active .flow .arrow{opacity:0;animation:fadeIn .35s both ease-out}
+  .slide.active .flow > *:nth-child(1){animation-delay:.35s}
+  .slide.active .flow > *:nth-child(2){animation-delay:.45s}
+  .slide.active .flow > *:nth-child(3){animation-delay:.55s}
+  .slide.active .flow > *:nth-child(4){animation-delay:.65s}
+  .slide.active .flow > *:nth-child(5){animation-delay:.75s}
+  .slide.active .flow > *:nth-child(6){animation-delay:.85s}
+  .slide.active .flow > *:nth-child(7){animation-delay:.95s}
+  .slide.active .flow > *:nth-child(8){animation-delay:1.05s}
+  .slide.active .flow > *:nth-child(9){animation-delay:1.2s;animation-duration:.5s}
+
+  .slide.active .contents ol li{opacity:0;animation:fadeInUp .4s both ease-out}
+  .slide.active .contents ol li:nth-child(1){animation-delay:.28s}
+  .slide.active .contents ol li:nth-child(2){animation-delay:.36s}
+  .slide.active .contents ol li:nth-child(3){animation-delay:.44s}
+  .slide.active .contents ol li:nth-child(4){animation-delay:.52s}
+  .slide.active .contents ol li:nth-child(5){animation-delay:.6s}
+  .slide.active .contents ol li:nth-child(6){animation-delay:.68s}
+
+  .slide.active .keyword-list .kw{opacity:0;animation:fadeInUp .45s both ease-out}
+  .slide.active .keyword-list .kw:nth-child(1){animation-delay:.3s}
+  .slide.active .keyword-list .kw:nth-child(2){animation-delay:.4s}
+  .slide.active .keyword-list .kw:nth-child(3){animation-delay:.5s}
+  .slide.active .keyword-list .kw:nth-child(4){animation-delay:.6s}
+  .slide.active .keyword-list .kw:nth-child(5){animation-delay:.7s}
+
+  .slide.active .conclusion .item{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .conclusion .item:nth-child(1){animation-delay:.3s}
+  .slide.active .conclusion .item:nth-child(2){animation-delay:.42s}
+  .slide.active .conclusion .item:nth-child(3){animation-delay:.54s}
+  .slide.active .conclusion .item:nth-child(4){animation-delay:.66s}
+
+  @media (prefers-reduced-motion: reduce){
+    .slide .title-band,.slide .content,.slide.cover .cover-main,.slide.qa .qa-main{opacity:1 !important;animation:none !important}
+    .slide.active *{animation:none !important;opacity:1 !important;transform:none !important}
+  }
+
+  /* ═══ QUOTE CASE — case slide layout ═══ */
+  .case{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,5vw,88px);height:100%;
+  }
+  .case .quote-block{
+    display:flex;flex-direction:column;justify-content:center;gap:20px;
+    padding-right:clamp(32px,3vw,52px);border-right:1px solid var(--rule);
+  }
+  .case .qmark{
+    font-family:var(--serif);font-size:clamp(60px,6vw,110px);
+    line-height:.6;color:var(--accent);opacity:.7;
+  }
+  .case blockquote{
+    margin:0;font-family:var(--s
