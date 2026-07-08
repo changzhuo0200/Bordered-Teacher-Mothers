@@ -1,0 +1,107 @@
+mplate-columns:170px 1fr;gap:clamp(24px,3vw,44px);
+    align-items:baseline;padding-bottom:clamp(14px,1.6vw,22px);
+    border-bottom:1px solid var(--rule);
+  }
+  .conclusion .item:last-child{border-bottom:none}
+  .conclusion .item .idx{
+    display:flex;flex-direction:column;gap:8px;
+    font-family:var(--serif);color:var(--accent);
+    font-size:clamp(22px,1.9vw,30px);font-style:italic;font-weight:500;line-height:1;
+  }
+  .conclusion .item .idx small{
+    font-family:var(--sans);color:var(--muted);
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:700;font-style:normal;line-height:1.2;
+  }
+  .conclusion .item h4{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(20px,1.7vw,28px);color:var(--ink);margin:0 0 8px;line-height:1.2;
+  }
+  .conclusion .item h4 em{font-style:italic;color:var(--accent);font-weight:500}
+  .conclusion .item p{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.15vw,18px);line-height:1.55;margin:0;font-weight:400;
+  }
+  .conclusion .item p em{color:var(--accent);font-style:italic;font-weight:600}
+
+  /* ═══ TWO-COL (contributions / limitations) ═══ */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,4vw,72px);height:100%;align-items:start}
+  .two-col > div{display:flex;flex-direction:column;gap:16px}
+  .two-col h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(28px,2.4vw,42px);color:var(--ink);
+    margin:0 0 clamp(18px,2vw,28px);
+    padding-bottom:0;border-bottom:none;
+    letter-spacing:-.005em;line-height:1.1;
+  }
+  .two-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0}
+  .two-col li{
+    padding:clamp(12px,1.4vh,18px) 0;border-top:1px solid var(--rule);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(13px,1.05vw,17px);line-height:1.5;font-weight:500;
+  }
+  .two-col li:last-child{border-bottom:1px solid var(--rule)}
+  .two-col li em{color:var(--accent);font-style:normal;font-weight:600}
+
+  /* ═══ REFERENCES ═══ */
+  .references .content{justify-content:flex-start}
+  .references .ref-list{
+    columns:3;column-gap:clamp(40px,4vw,64px);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(10px,.85vw,13px);line-height:1.4;
+  }
+  .references .ref-list p{margin:0 0 12px;break-inside:avoid}
+  .references .ref-list em{font-family:var(--serif);font-style:italic;color:var(--muted)}
+
+  /* ═══ THANKS / Q&A ═══ */
+  .qa{padding-top:clamp(60px,6vw,110px)}
+  .qa-head{
+    position:absolute;top:clamp(38px,3.6vw,58px);
+    left:clamp(56px,5vw,96px);right:clamp(56px,5vw,96px);
+    display:flex;justify-content:space-between;align-items:flex-start;gap:32px;
+  }
+  .qa-head .logo{
+    height:clamp(48px,4.6vw,72px);width:auto;object-fit:contain;
+    filter:brightness(.85);flex:none;display:block;
+  }
+  .qa-head .meta{
+    text-align:right;font-family:var(--sans);
+    font-size:clamp(12px,1vw,15px);color:var(--muted);
+    line-height:1.55;letter-spacing:.03em;font-weight:500;
+  }
+  .qa-head .meta .head-row{
+    font-size:clamp(11px,.9vw,13px);color:var(--ink);
+    text-transform:uppercase;letter-spacing:.16em;font-weight:700;
+  }
+  .qa-head .meta .sub-row{margin-top:8px;color:var(--muted)}
+  .qa .qa-main{margin-top:clamp(90px,12vh,180px);max-width:min(84vw,1240px)}
+  .qa h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(72px,8.5vw,140px);line-height:.96;
+    letter-spacing:-.01em;color:var(--ink);margin:0;
+  }
+  .qa .qa-sub{
+    margin-top:clamp(24px,3vw,42px);max-width:960px;
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(22px,2.2vw,36px);color:var(--muted);line-height:1.22;
+  }
+  .qa .qa-rule{height:2px;width:min(60vw,760px);background:var(--accent);margin:clamp(28px,3vw,48px) 0 clamp(18px,2vw,28px)}
+  .qa .qa-meta{color:var(--muted);font-size:clamp(14px,1.15vw,18px);letter-spacing:.04em;line-height:1.6}
+  .qa .qa-meta strong{color:var(--ink);font-weight:600}
+
+  /* ═══ BRAND (cover + qa) ═══ */
+  .brand{
+    position:absolute;top:clamp(30px,3vw,50px);left:clamp(48px,4.5vw,88px);
+    display:flex;align-items:center;z-index:5;
+  }
+  .brand img{
+    height:clamp(46px,4.6vw,74px);width:auto;object-fit:contain;
+    filter:brightness(.85);
+  }
+
+  /* ═══ Contents · clickable ═══ */
+  .contents li{cursor:pointer;transition:background .18s}
+  .contents li:hover{background:rgba(128,108,84,.06)}
+  .contents li:hover .num{color:var(--ink)}
+  .contents li .txt{transition:transform .16s}
+  .contents li:hover .txt{
