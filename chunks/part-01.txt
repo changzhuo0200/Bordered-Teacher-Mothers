@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bordered Teacher-Mothers · ACWS 2026 · Zhuo Chang</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4EEE2;
+    --ink:#1F1B16;
+    --muted:#685B4E;
+    --accent:#806C54;
+    --rule:rgba(95,77,54,.28);
+    --rule-strong:rgba(95,77,54,.5);
+    --serif:'Big Caslon','Cormorant Garamond','Libre Baskerville',Georgia,serif;
+    --sans:Avenir,'Avenir Next','Nunito Sans','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:#2a2823;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;height:100vh;width:100vw;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .slide{
+    flex:0 0 100vw;width:100vw;height:100vh;height:100dvh;
+    overflow:hidden;position:relative;
+    padding:clamp(48px,4.5vw,80px) clamp(56px,5vw,96px);
+    background:
+      radial-gradient(circle at 28% 22%, rgba(255,255,255,.5), transparent 40%),
+      linear-gradient(120deg, rgba(255,255,255,.28), rgba(221,210,190,.22)),
+      var(--paper);
+    display:flex;flex-direction:column;
+  }
+
+  /* ═══ Common — eyebrow / page-num / footer ═══ */
+  .label{
+    position:absolute;top:clamp(38px,3.6vw,58px);left:clamp(56px,5vw,96px);
+    color:var(--accent);font-weight:700;font-size:clamp(11px,.85vw,13px);
+    text-transform:uppercase;letter-spacing:.22em;
+    line-height:1;
+  }
+  .page-num{
+    position:absolute;top:clamp(38px,3.6vw,58px);right:clamp(56px,5vw,96px);
+    color:var(--muted);font-size:clamp(11px,.9vw,14px);
+    letter-spacing:.14em;font-weight:500;
+    line-height:1;
+  }
+  footer{
+    position:absolute;bottom:clamp(28px,3vw,44px);
+    left:clamp(56px,5vw,96px);right:clamp(56px,5vw,96px);
+    display:flex;justify-content:space-between;gap:24px;
+    border-top:1px solid var(--rule);padding-top:14px;
+    color:var(--muted);font-size:clamp(10px,.85vw,13px);
+    letter-spacing:.06em;font-weight:500;
+  }
+  footer span:nth-child(2){font-family:var(--serif);font-style:italic;font-size:clamp(11px,.9vw,14px)}
+
+  /* ═══ Slide title band (top ~1/5) ═══ */
+  .title-band{
+    margin-top:clamp(38px,4vw,60px);
+    padding-bottom:clamp(14px,1.5vw,22px);
+    border-bottom:1px solid var(--rule-strong);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  h1.slide-title{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,3.6vw,60px);line-height:1.05;
+    letter-spacing:-.005em;color:var(--ink);margin:0;
+  }
+  .slide-sub{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(13px,1.05vw,17px);font-weight:600;
+    letter-spacing:.02em;line-height:1.35;
+  }
+
+  /* ═══ Content zone (bottom ~4/5) ═══ */
+  .content{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(24px,3vw,44px) 0 clamp(48px,4vw,72px);
+  }
+
+  /* ═══ COVER ═══ */
+  .cover{padding-top:clamp(50px,5vw,86px);justify-content:center}
+  .cover-head{
+    position:absolute;top:clamp(38px,3.6vw,58px);
+    left:clamp(56px,5vw,96px);right:clamp(56px,5vw,96px);
+    display:flex;justify-content:space-between;align-items:flex-start;gap:32px;
+  }
+  .cover-head .logo{
+    height:clamp(48px,4.6vw,72px);width:auto;object-fit:contain;
+    filter:brightness(.85);flex:none;display:block;
+  }
+  .cover-head .meta{
+    text-align:right;font-family:var(--sans);
+    font-size:clamp(12px,1vw,15px);color:var(--muted);
+    line-height:1.55;letter-spacing:.03em;font-weight:500;
+  }
+  .cover-head .meta .head-row{
+    font-size:clamp(11px,.9vw,13px);color:var(--ink);
+    text-transform:uppercase;letter-spacing:.16em;font-weight:700;
+  }
+  .cover-head .meta .sub-row{margin-top:8px;color:var(--muted)}
+  .cover-main{margin:0;max-width:min(84vw,1240px)}
+  .cover h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(66px,7.5vw,124px);line-height:.98;
+    letter-spacing:-.01em;color:var(--ink);margin:0;
+  }
+  .cover .subtitle{
+    margin-top:clamp(26px,3vw,44px);max-width:1080px;
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(22px,2.4vw,40px);color:var(--muted);
+    line-height:1.22;
+  }
+  .cover .zh-sub{
+    margin-top:clamp(14px,1.5vw,22px);max-width:1080px;
+    font-f
