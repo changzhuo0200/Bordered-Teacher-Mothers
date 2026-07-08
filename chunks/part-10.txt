@@ -1,0 +1,90 @@
+ry</h1>
+      <div class="slide-sub">Hesse-Biber (2014); Riessman (2008); Stake (1995)</div>
+    </div>
+    <div class="content">
+      <div class="methods">
+        <div class="m">
+          <div class="idx">i.</div>
+          <h3>Literature Review</h3>
+          <p><em>86 documents</em> — teacher-mother scholarship, emotional labour, educational maternalisation, Asian developmentalist–neoliberal governance.</p>
+        </div>
+        <div class="m">
+          <div class="idx">ii.</div>
+          <h3>Semi-Structured Interviews</h3>
+          <p><em>3 women primary teachers</em>, Jiangsu; 1–2 interviews each. Daily life, school–family communication, mothering, division of labour, emotional management.</p>
+        </div>
+        <div class="m">
+          <div class="idx">iii.</div>
+          <h3>Participant Observation</h3>
+          <p>Office observation with one participant — school–family communication, fragmented time, colleagues' parenting talk, teaching / mothering interaction.</p>
+        </div>
+        <div class="m">
+          <div class="idx">iv.</div>
+          <h3>Thematic Analysis</h3>
+          <p>Braun &amp; Clarke (2006). Three themes: <em>moving school–family borders</em>, <em>second shift &amp; care chains</em>, <em>maternalised emotional labour</em>. Pseudonyms throughout.</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 05 / 18</span></footer>
+  </section>
+
+  <!-- 06 · PARTICIPANTS -->
+  <section class="slide">
+    <div class="label">02 · Participants</div>
+    <div class="page-num">06 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Three Women Primary Teachers, Jiangsu</h1>
+      <div class="slide-sub">Pseudonymous. Interviewed and observed between fieldwork sessions.</div>
+    </div>
+    <div class="content">
+      <div class="participants">
+        <div class="p">
+          <div class="name">Zhao<em>Teacher Zhao</em></div>
+          <div class="lab">Position</div>
+          <p>Public primary school; Chinese language teacher.</p>
+          <div class="lab">Family</div>
+          <p>Child in transition from primary to lower secondary school.</p>
+        </div>
+        <div class="p">
+          <div class="name">Gong<em>Teacher Gong</em></div>
+          <div class="lab">Position</div>
+          <p>Long-term homeroom teacher; reassigned from Chinese to Maths after maternity leave.</p>
+          <div class="lab">Family</div>
+          <p>Child at higher schooling stage; lives with mother; grandmother manages three meals daily.</p>
+        </div>
+        <div class="p">
+          <div class="name">Yu<em>Teacher Yu</em></div>
+          <div class="lab">Position</div>
+          <p>Public primary school in Nanjing; language teacher; class management + grade research.</p>
+          <div class="lab">Family</div>
+          <p>Child still at primary stage.</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 06 / 18</span></footer>
+  </section>
+
+  <!-- 07 · ANALYTICAL FRAME (context) -->
+  <section class="slide">
+    <div class="label">03 · Analytical Framework</div>
+    <div class="page-num">07 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Asian Developmentalism–Neoliberalism</h1>
+      <div class="slide-sub">Adriany (2018); Ong (2006); Park (2007); Wang &amp; Hamid (2024)</div>
+    </div>
+    <div class="content">
+      <div class="center-statement" style="align-items:flex-start;text-align:left;max-width:1280px;gap:clamp(32px,4vw,52px)">
+        <div class="lead">Education is tied to <em>national development</em>, <em>human capital</em>, and <em>family mobility</em>.</div>
+        <div class="flow">
+          <div class="node">State</div>
+          <div class="arrow">→</div>
+          <div class="node">School</div>
+          <div class="arrow">→</div>
+          <div class="node">Market</div>
+          <div class="arrow">→</div>
+          <div class="node">Family</div>
+          <div class="arrow arrow-out">══▶</div>
+          <div class="node node-end">Teacher-Mother<em>time · body · emotion · kinship</em></div>
+        </div>
+        <div class="support" style="font-family:var(--sans);font-style:normal;font-size:clamp(15px,1.25vw,19px);color:var(--muted);line-height:1.55;max-width:1120px;letter-spacing:.01em">
+          After <em style="color:var(--accent);font-style:normal;f
