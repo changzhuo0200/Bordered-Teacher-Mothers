@@ -1,0 +1,109 @@
+(--rule);
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(11px,.9vw,13.5px);line-height:1.5;
+  }
+  .framework-3 .converge{
+    position:absolute;bottom:0;left:0;right:0;
+    display:flex;flex-direction:column;align-items:center;
+    gap:clamp(24px,3vh,44px);
+  }
+  .framework-3 .converge .arrows{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:clamp(20px,2.5vw,40px);width:100%;
+    color:var(--accent);
+    font-size:clamp(28px,2.6vw,42px);
+    line-height:1;
+    font-family:var(--sans);font-weight:400;
+    padding-top:clamp(28px,3.5vh,52px);
+  }
+  .framework-3 .converge .arrows span{
+    display:block;text-align:center;
+    position:relative;
+  }
+  /* thin line dropping from each mech card to the arrow, extending the arrow's reach */
+  .framework-3 .converge .arrows span::before{
+    content:"";position:absolute;
+    left:50%;top:calc(-1 * clamp(28px,3.5vh,52px));
+    width:1px;height:clamp(28px,3.5vh,52px);
+    background:linear-gradient(to bottom, transparent, var(--accent));
+    transform:translateX(-50%);
+  }
+  .framework-3 .converge .node{
+    padding:clamp(14px,1.6vw,22px) clamp(28px,3vw,44px);
+    background:var(--accent);color:var(--paper);
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(20px,1.7vw,28px);line-height:1.15;text-align:center;
+    letter-spacing:-.005em;
+  }
+  .framework-3 .converge .node em{
+    display:block;font-family:var(--sans);font-style:normal;
+    font-size:.5em;letter-spacing:.2em;text-transform:uppercase;
+    opacity:.85;margin-top:8px;font-weight:600;
+  }
+
+  /* ═══ KEYWORD LIST (contributions / limits) — no row borders ═══ */
+  .keyword-list{display:flex;flex-direction:column;gap:clamp(18px,2vw,28px)}
+  .keyword-list .kw{
+    display:grid;grid-template-columns:150px 1fr;
+    align-items:baseline;gap:clamp(20px,2vw,32px);
+  }
+  .keyword-list .kw .term{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(12px,1vw,15px);font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;
+  }
+  .keyword-list .kw .val{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(18px,1.5vw,24px);color:var(--ink);line-height:1.32;
+  }
+  .keyword-list .kw .val em{color:var(--accent);font-style:normal;font-weight:500}
+  .keyword-list .kw .val span{
+    color:var(--muted);font-family:var(--sans);
+    font-size:.65em;font-style:normal;letter-spacing:.02em;
+    font-weight:400;display:block;margin-top:6px;
+  }
+
+  /* ═══ ZH quote helper (interview cases) ═══ */
+  .zh-original{
+    margin-top:clamp(14px,1.5vw,22px);padding-top:clamp(14px,1.5vw,22px);
+    border-top:1px dashed var(--rule);
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(12px,1vw,15px);line-height:1.65;letter-spacing:.02em;
+    font-weight:400;
+  }
+  .zh-original::before{
+    content:"中文原文 · Original";display:block;margin-bottom:6px;
+    font-family:var(--sans);color:var(--accent);
+    font-size:.75em;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+
+  /* ═══ REFERENCES PAGE ═══ */
+  .refs-page .content{justify-content:flex-start;padding-top:clamp(16px,1.5vw,24px)}
+  .refs-list{
+    columns:2;column-gap:clamp(40px,4vw,64px);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(11.5px,.95vw,14px);line-height:1.5;
+  }
+  .refs-list p{margin:0 0 clamp(10px,1.2vw,15px);break-inside:avoid;padding-left:1.4em;text-indent:-1.4em}
+  .refs-list em{font-family:var(--serif);font-style:italic;color:var(--muted)}
+  .refs-list b{font-weight:600;color:var(--ink)}
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+
+  /* base opacity so animations can fade in */
+  .slide .title-band,.slide .content,
+  .slide.cover .cover-main,.slide.qa .qa-main{opacity:0}
+
+  .slide.active .title-band{animation:fadeInUp .55s .05s both ease-out}
+  .slide.active .content{animation:fadeInUp .55s .18s both ease-out}
+  .slide.active.cover .cover-main{animation:fadeInUp .7s .12s both ease-out}
+  .slide.active.qa .qa-main{animation:fadeInUp .7s .15s both ease-out}
+
+  /* staggered list items */
+  .slide.active .stack-3 .row{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .stack-3 .row:nth-child(1){animation-delay:.32s}
+  .slide.active .stack-3 .row:nth-child(2){animation-delay:.47s}
+  .slide.active .stack-3 .row:nth-child(3
