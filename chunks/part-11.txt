@@ -1,0 +1,91 @@
+ont-weight:600">Double Reduction</em>, homework, grading, and admission competition are reallocated among state, school, market, and family — ultimately landing on teachers' after-school time and mothers' domestic labour.
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 07 / 18</span></footer>
+  </section>
+
+  <!-- 08 · THREE BORDERING CONCEPTS (Venn) -->
+  <section class="slide">
+    <div class="label">03 · Three Concepts</div>
+    <div class="page-num">08 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Three Bordering Mechanisms</h1>
+      <div class="slide-sub">Together they produce the <em style="font-style:italic">teacher-mother position</em>.</div>
+    </div>
+    <div class="content">
+      <div class="framework-3">
+        <div class="mech m1">
+          <div class="eyebrow">Institutional</div>
+          <h3>Bordering the School</h3>
+          <div class="desc">responsibility expansion</div>
+          <div class="refs">Acker (1990, 2006)<br>Yuval-Davis et&nbsp;al. (2019)</div>
+        </div>
+        <div class="mech m2">
+          <div class="eyebrow">Reproductive</div>
+          <h3>Bordering the Home</h3>
+          <div class="desc">labour relocation</div>
+          <div class="refs">Hochschild &amp; Machung (2012)<br>Fraser (2016); Parreñas (2015)</div>
+        </div>
+        <div class="mech m3">
+          <div class="eyebrow">Affective</div>
+          <h3>Bordering the Emotional</h3>
+          <div class="desc">emotion extraction</div>
+          <div class="refs">Hochschild (2012)<br>Noddings (2013)</div>
+        </div>
+        <div class="converge">
+          <div class="arrows"><span>↘</span><span>↓</span><span>↙</span></div>
+          <div class="node">Teacher-Mother<em>bordered position</em></div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 08 / 18</span></footer>
+  </section>
+
+  <!-- 09 · CENTRAL CLAIM -->
+  <section class="slide">
+    <div class="label">03 · Central Analytical Claim</div>
+    <div class="page-num">09 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">Not Role Conflict — a <em style="font-style:italic;color:var(--accent);font-weight:500">Bordered Position</em></h1>
+      <div class="slide-sub">Identity restructuring is sedimentation of institutional repositioning, not psychological growth.</div>
+    </div>
+    <div class="content">
+      <div class="center-statement">
+        <div class="lead" style="font-size:clamp(28px,2.6vw,42px);max-width:1180px">
+          The reallocation of educational responsibility among <em>school</em>, <em>family</em>, <em>market</em>, and <em>state</em> is lodged in women teachers' <em>time</em>, <em>body</em>, <em>emotion</em>, and <em>kinship</em>.
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 09 / 18</span></footer>
+  </section>
+
+  <!-- 10 · Ch.1 INSTITUTIONAL (Zhao case) -->
+  <section class="slide">
+    <div class="label">04.1 · Institutional Bordering</div>
+    <div class="page-num">10 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">The School Domain</h1>
+      <div class="slide-sub">School–family collaboration expands teacher responsibility beyond teaching.</div>
+    </div>
+    <div class="content">
+      <div class="case">
+        <div class="quote-block">
+          <div class="qmark">&ldquo;</div>
+          <blockquote>I just want to know that, before hitting him, the parent had at least ruled out some physical or developmental reason.</blockquote>
+          <div class="attribution">Teacher Zhao</div>
+          <div class="zh-original">我不是特别想知道结果是什么，我只是想知道，你打他之前，你先排除一些生理或者发展上的原因吧。</div>
+        </div>
+        <div class="analysis">
+          <div class="head">Key Empirical Dynamics</div>
+          <ul>
+            <li>Developmental advice to parents</li>
+            <li>After-school tutoring as obligation</li>
+            <li>Family-education intervention</li>
+            <li>"The child is in our hands"</li>
+          </ul>
+          <p class="arg">School–family collaboration becomes a conduit through which educational responsibility descends onto teachers' time and emotional labour — without being named as expansion.</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Border
