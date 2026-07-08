@@ -4,56 +4,2082 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bordered Teacher-Mothers · ACWS 2026 · Zhuo Chang</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500&display=swap" rel="stylesheet">
 <style>
-html,body{height:100%;margin:0;background:#f4eee2;color:#1f1b16;font:16px Avenir,system-ui,sans-serif;display:grid;place-items:center}.status{max-width:680px;text-align:center;line-height:1.5;padding:24px}.status b{font-family:Georgia,serif;font-size:30px;font-weight:400;display:block;margin-bottom:12px}.status span{color:#5f5349}a{color:#7b1620}
+  :root{
+    --paper:#F4EEE2;
+    --ink:#1F1B16;
+    --muted:#685B4E;
+    --accent:#806C54;
+    --rule:rgba(95,77,54,.28);
+    --rule-strong:rgba(95,77,54,.5);
+    --serif:'Big Caslon','Cormorant Garamond','Libre Baskerville',Georgia,serif;
+    --sans:Avenir,'Avenir Next','Nunito Sans','Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;overflow:hidden;background:#2a2823;color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+  .deck{display:flex;height:100vh;width:100vw;transition:transform .55s cubic-bezier(.22,.61,.36,1)}
+  .slide{
+    flex:0 0 100vw;width:100vw;height:100vh;height:100dvh;
+    overflow:hidden;position:relative;
+    padding:clamp(48px,4.5vw,80px) clamp(56px,5vw,96px);
+    background:
+      radial-gradient(circle at 28% 22%, rgba(255,255,255,.5), transparent 40%),
+      linear-gradient(120deg, rgba(255,255,255,.28), rgba(221,210,190,.22)),
+      var(--paper);
+    display:flex;flex-direction:column;
+  }
+
+  /* ═══ Common — eyebrow / page-num / footer ═══ */
+  .label{
+    position:absolute;top:clamp(38px,3.6vw,58px);left:clamp(56px,5vw,96px);
+    color:var(--accent);font-weight:700;font-size:clamp(11px,.85vw,13px);
+    text-transform:uppercase;letter-spacing:.22em;
+    line-height:1;
+  }
+  .page-num{
+    position:absolute;top:clamp(38px,3.6vw,58px);right:clamp(56px,5vw,96px);
+    color:var(--muted);font-size:clamp(11px,.9vw,14px);
+    letter-spacing:.14em;font-weight:500;
+    line-height:1;
+  }
+  footer{
+    position:absolute;bottom:clamp(28px,3vw,44px);
+    left:clamp(56px,5vw,96px);right:clamp(56px,5vw,96px);
+    display:flex;justify-content:space-between;gap:24px;
+    border-top:1px solid var(--rule);padding-top:14px;
+    color:var(--muted);font-size:clamp(10px,.85vw,13px);
+    letter-spacing:.06em;font-weight:500;
+  }
+  footer span:nth-child(2){font-family:var(--serif);font-style:italic;font-size:clamp(11px,.9vw,14px)}
+
+  /* ═══ Slide title band (top ~1/5) ═══ */
+  .title-band{
+    margin-top:clamp(38px,4vw,60px);
+    padding-bottom:clamp(14px,1.5vw,22px);
+    border-bottom:1px solid var(--rule-strong);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  h1.slide-title{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,3.6vw,60px);line-height:1.05;
+    letter-spacing:-.005em;color:var(--ink);margin:0;
+  }
+  .slide-sub{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(13px,1.05vw,17px);font-weight:600;
+    letter-spacing:.02em;line-height:1.35;
+  }
+
+  /* ═══ Content zone (bottom ~4/5) ═══ */
+  .content{
+    flex:1;display:flex;flex-direction:column;justify-content:center;
+    padding:clamp(24px,3vw,44px) 0 clamp(48px,4vw,72px);
+  }
+
+  /* ═══ COVER ═══ */
+  .cover{padding-top:clamp(50px,5vw,86px);justify-content:center}
+  .cover-head{
+    position:absolute;top:clamp(38px,3.6vw,58px);
+    left:clamp(56px,5vw,96px);right:clamp(56px,5vw,96px);
+    display:flex;justify-content:space-between;align-items:flex-start;gap:32px;
+  }
+  .cover-head .logo{
+    height:clamp(48px,4.6vw,72px);width:auto;object-fit:contain;
+    filter:brightness(.85);flex:none;display:block;
+  }
+  .cover-head .logo-text,
+  .qa-head .logo-text{
+    width:clamp(150px,14vw,220px);
+    color:var(--accent);
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:clamp(11px,.95vw,14px);
+    line-height:1.15;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    border-top:2px solid var(--accent);
+    padding-top:8px;
+  }
+  .cover-head .meta{
+    text-align:right;font-family:var(--sans);
+    font-size:clamp(12px,1vw,15px);color:var(--muted);
+    line-height:1.55;letter-spacing:.03em;font-weight:500;
+  }
+  .cover-head .meta .head-row{
+    font-size:clamp(11px,.9vw,13px);color:var(--ink);
+    text-transform:uppercase;letter-spacing:.16em;font-weight:700;
+  }
+  .cover-head .meta .sub-row{margin-top:8px;color:var(--muted)}
+  .cover-main{margin:0;max-width:min(84vw,1240px)}
+  .cover h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(66px,7.5vw,124px);line-height:.98;
+    letter-spacing:-.01em;color:var(--ink);margin:0;
+  }
+  .cover .subtitle{
+    margin-top:clamp(26px,3vw,44px);max-width:1080px;
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(22px,2.4vw,40px);color:var(--muted);
+    line-height:1.22;
+  }
+  .cover .zh-sub{
+    margin-top:clamp(14px,1.5vw,22px);max-width:1080px;
+    font-family:var(--serif);font-size:clamp(18px,1.8vw,30px);
+    color:var(--muted);line-height:1.4;letter-spacing:.02em;
+  }
+  .cover .cover-rule{
+    height:2px;width:min(76vw,980px);background:var(--accent);
+    margin:clamp(30px,3.5vw,54px) 0 clamp(20px,2vw,32px);
+  }
+  .cover .cover-meta{
+    color:var(--muted);font-size:clamp(14px,1.15vw,18px);
+    letter-spacing:.04em;line-height:1.6;
+  }
+  .cover .cover-meta strong{font-weight:600;color:var(--ink)}
+  .cover footer{border-top:1px solid var(--rule)}
+  .cover footer .tag{font-family:var(--serif);font-style:italic;font-size:clamp(13px,1vw,16px);color:var(--muted)}
+
+  /* ═══ CONTENTS ═══ */
+  .contents .content{justify-content:flex-start}
+  .contents ol{
+    margin:0;padding:0;list-style:none;
+    display:grid;grid-template-columns:repeat(2,1fr);
+    column-gap:clamp(52px,6vw,96px);row-gap:0;
+  }
+  .contents li{
+    display:grid;grid-template-columns:78px 1fr;
+    align-items:center;padding:clamp(16px,2vh,28px) 0;
+    border-bottom:1px solid var(--rule);gap:20px;
+  }
+  .contents li .num{
+    font-family:var(--serif);color:var(--accent);
+    font-size:clamp(28px,2.8vw,42px);font-weight:500;line-height:1;
+  }
+  .contents li .txt{
+    font-family:var(--sans);font-weight:600;
+    font-size:clamp(16px,1.35vw,22px);color:var(--ink);line-height:1.3;
+  }
+  .contents li .txt small{
+    display:block;font-family:var(--serif);font-style:italic;
+    font-size:.75em;color:var(--muted);font-weight:400;margin-top:4px;letter-spacing:.02em;
+  }
+  .contents .intro{
+    max-width:640px;margin-bottom:clamp(20px,2vw,32px);
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(17px,1.5vw,24px);color:var(--muted);line-height:1.4;
+  }
+
+  /* ═══ 3-BLOCK VERTICAL STACK (background, dynamics) ═══ */
+  .stack-3{display:flex;flex-direction:column;gap:clamp(18px,2.2vw,32px);width:100%}
+  .stack-3 .row{
+    display:grid;grid-template-columns:180px 1fr;
+    gap:clamp(24px,3vw,48px);align-items:baseline;
+    padding-bottom:clamp(14px,1.6vw,22px);
+    border-bottom:1px solid var(--rule);
+  }
+  .stack-3 .row:last-child{border-bottom:none}
+  .stack-3 .row .k{
+    font-family:var(--serif);color:var(--accent);
+    font-size:clamp(24px,2vw,32px);font-weight:500;line-height:1.1;
+  }
+  .stack-3 .row .k small{
+    display:block;font-family:var(--sans);color:var(--muted);
+    font-size:.42em;letter-spacing:.22em;text-transform:uppercase;
+    margin-top:8px;font-weight:600;
+  }
+  .stack-3 .row .v{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(16px,1.35vw,22px);line-height:1.55;font-weight:400;
+  }
+  .stack-3 .row .v em{color:var(--accent);font-style:normal;font-weight:600}
+
+  /* ═══ CENTERED STATEMENT ═══ */
+  .center-statement{
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;gap:clamp(24px,3vw,44px);height:100%;
+    max-width:min(90vw,1180px);margin:0 auto;
+  }
+  .center-statement .lead{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(38px,4vw,68px);line-height:1.1;color:var(--ink);
+    letter-spacing:-.005em;
+  }
+  .center-statement .lead em{font-style:italic;color:var(--accent);font-weight:500}
+  .center-statement .support{
+    font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:clamp(18px,1.6vw,26px);line-height:1.4;max-width:820px;
+  }
+
+  /* ═══ DOMAIN PREVIEW (slide 9 · three chapters) ═══ */
+  .domain-preview{width:100%;max-width:1240px;margin:0}
+  .domain-preview .domain-head{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(13px,1.05vw,16px);letter-spacing:.02em;
+    margin-bottom:clamp(16px,1.8vw,24px);font-weight:500;
+  }
+  .domain-preview .domains{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.2vw,32px);
+  }
+  .domain-preview .d{
+    padding-top:clamp(14px,1.4vw,20px);
+    border-top:2px solid var(--accent);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .domain-preview .d-num{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.95vw,13px);letter-spacing:.24em;
+    text-transform:uppercase;font-weight:700;
+  }
+  .domain-preview .d-name{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(22px,2vw,32px);color:var(--ink);line-height:1.15;
+    letter-spacing:-.005em;
+  }
+  .domain-preview .d-mech{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(13px,1.1vw,17px);font-style:italic;
+  }
+
+  /* ═══ QUESTIONS grid (Q1 Q2 Q3) ═══ */
+  .q-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(26px,3vw,48px);
+  }
+  .q-grid .q{
+    display:flex;flex-direction:column;gap:16px;
+    padding-top:22px;border-top:2px solid var(--accent);
+  }
+  .q-grid .q .qn{
+    font-family:var(--sans);font-size:clamp(12px,.95vw,14px);
+    color:var(--accent);font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  }
+  .q-grid .q h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(24px,2.1vw,34px);line-height:1.15;color:var(--ink);margin:0;
+    letter-spacing:-.005em;
+  }
+  .q-grid .q p{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(15px,1.2vw,19px);line-height:1.5;margin:0;font-weight:400;
+  }
+
+  /* ═══ METHODS 4-quadrant grid ═══ */
+  .methods{
+    display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:1fr 1fr;
+    gap:clamp(22px,2.5vw,40px);height:100%;
+  }
+  .methods .m{
+    display:flex;flex-direction:column;gap:14px;padding:clamp(18px,2vw,30px);
+    border:1px solid var(--rule);background:rgba(255,255,255,.28);
+  }
+  .methods .m .idx{
+    font-family:var(--serif);color:var(--accent);
+    font-size:clamp(14px,1vw,17px);font-style:italic;letter-spacing:.02em;
+  }
+  .methods .m h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(22px,1.8vw,30px);line-height:1.15;color:var(--ink);margin:0;
+  }
+  .methods .m p{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(14px,1.2vw,18px);line-height:1.55;margin:0;
+  }
+  .methods .m p em{color:var(--accent);font-style:normal;font-weight:600}
+  .methods .m ul.theme-list{
+    list-style:none;margin:8px 0 0;padding:0;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .methods .m ul.theme-list li{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.2vw,18px);line-height:1.45;font-weight:500;
+    padding-left:16px;position:relative;
+  }
+  .methods .m ul.theme-list li::before{
+    content:"—";position:absolute;left:0;color:var(--accent);font-weight:600;
+  }
+
+  /* ═══ PARTICIPANTS 3-card ═══ */
+  .participants{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,3vw,44px);
+  }
+  .participants .p{
+    display:flex;flex-direction:column;gap:14px;
+    padding-top:20px;border-top:2px solid var(--ink);
+  }
+  .participants .p .name{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(30px,2.8vw,46px);line-height:1;color:var(--ink);
+  }
+  .participants .p .name em{font-family:var(--sans);font-style:normal;font-size:.5em;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:600;display:block;margin-top:8px}
+  .participants .p .lab{
+    font-family:var(--sans);font-size:clamp(11px,.9vw,13px);
+    color:var(--accent);letter-spacing:.2em;text-transform:uppercase;font-weight:700;margin-top:6px;
+  }
+  .participants .p p{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.2vw,19px);line-height:1.55;margin:0;
+  }
+
+  /* ═══ FLOW DIAGRAM (responsibility descent) ═══ */
+  .flow{
+    display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;
+    gap:clamp(10px,1.2vw,18px);width:100%;
+  }
+  .flow .node{
+    padding:clamp(10px,1.2vw,18px) clamp(14px,1.6vw,24px);
+    border:1px solid var(--rule-strong);background:rgba(255,255,255,.5);
+    font-family:var(--sans);font-weight:600;color:var(--ink);
+    font-size:clamp(13px,1.15vw,18px);letter-spacing:.02em;
+    display:flex;flex-direction:column;align-items:center;gap:4px;
+  }
+  .flow .node.node-end{
+    background:var(--accent);color:var(--paper);border-color:var(--accent);
+    padding:clamp(12px,1.4vw,22px) clamp(18px,2vw,30px);
+  }
+  .flow .node em{
+    font-family:var(--serif);font-style:italic;font-weight:400;
+    font-size:.72em;color:inherit;opacity:.85;letter-spacing:.01em;
+  }
+  .flow .arrow{
+    font-family:var(--sans);color:var(--accent);font-weight:400;
+    font-size:clamp(16px,1.6vw,24px);line-height:1;
+  }
+  .flow .arrow.arrow-out{font-size:clamp(18px,1.8vw,26px)}
+
+  /* ═══ CARE CHAIN diagram ═══ */
+  .care-chain{
+    display:flex;align-items:center;justify-content:center;gap:clamp(14px,1.5vw,22px);
+    margin-top:clamp(18px,2vw,28px);flex-wrap:wrap;
+  }
+  .care-chain .cnode{
+    width:clamp(110px,10vw,150px);aspect-ratio:1;border-radius:50%;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;gap:6px;padding:12px;
+    background:rgba(255,255,255,.5);border:1px solid var(--rule-strong);
+  }
+  .care-chain .cnode strong{
+    font-family:var(--serif);font-weight:500;font-size:clamp(15px,1.3vw,20px);color:var(--ink);
+  }
+  .care-chain .cnode em{
+    font-family:var(--sans);font-style:normal;font-size:clamp(10px,.85vw,12px);
+    color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  }
+  .care-chain .carrow{color:var(--accent);font-size:clamp(18px,1.8vw,26px)}
+
+  /* ═══ 3-COLUMN FRAMEWORK (replaces Venn — no overlap) ═══ */
+  .framework-3{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.5vw,40px);
+    position:relative;padding-bottom:clamp(200px,20vh,280px);
+    width:100%;
+  }
+  .framework-3 .mech{
+    background:rgba(255,255,255,.4);border-top:3px solid var(--ink);
+    padding:clamp(20px,2.2vw,32px) clamp(18px,2vw,26px);
+    display:flex;flex-direction:column;gap:12px;
+    position:relative;
+  }
+  .framework-3 .mech.m1{border-top-color:#7A8A80}
+  .framework-3 .mech.m2{border-top-color:#8A5454}
+  .framework-3 .mech.m3{border-top-color:#7E8D6E}
+  .framework-3 .mech .eyebrow{
+    color:var(--accent);font-family:var(--sans);
+    font-size:clamp(10px,.9vw,13px);font-weight:700;
+    letter-spacing:.26em;text-transform:uppercase;
+  }
+  .framework-3 .mech h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(22px,2vw,32px);line-height:1.12;color:var(--ink);margin:0;
+  }
+  .framework-3 .mech .desc{
+    font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:clamp(15px,1.25vw,19px);line-height:1.3;
+  }
+  .framework-3 .mech .refs{
+    margin-top:auto;padding-top:12px;border-top:1px dashed var(--rule);
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(11px,.9vw,13.5px);line-height:1.5;
+  }
+  .framework-3 .converge{
+    position:absolute;bottom:0;left:0;right:0;
+    display:flex;flex-direction:column;align-items:center;
+    gap:clamp(24px,3vh,44px);
+  }
+  .framework-3 .converge .arrows{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:clamp(20px,2.5vw,40px);width:100%;
+    color:var(--accent);
+    font-size:clamp(28px,2.6vw,42px);
+    line-height:1;
+    font-family:var(--sans);font-weight:400;
+    padding-top:clamp(28px,3.5vh,52px);
+  }
+  .framework-3 .converge .arrows span{
+    display:block;text-align:center;
+    position:relative;
+  }
+  /* thin line dropping from each mech card to the arrow, extending the arrow's reach */
+  .framework-3 .converge .arrows span::before{
+    content:"";position:absolute;
+    left:50%;top:calc(-1 * clamp(28px,3.5vh,52px));
+    width:1px;height:clamp(28px,3.5vh,52px);
+    background:linear-gradient(to bottom, transparent, var(--accent));
+    transform:translateX(-50%);
+  }
+  .framework-3 .converge .node{
+    padding:clamp(14px,1.6vw,22px) clamp(28px,3vw,44px);
+    background:var(--accent);color:var(--paper);
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(20px,1.7vw,28px);line-height:1.15;text-align:center;
+    letter-spacing:-.005em;
+  }
+  .framework-3 .converge .node em{
+    display:block;font-family:var(--sans);font-style:normal;
+    font-size:.5em;letter-spacing:.2em;text-transform:uppercase;
+    opacity:.85;margin-top:8px;font-weight:600;
+  }
+
+  /* ═══ KEYWORD LIST (contributions / limits) — no row borders ═══ */
+  .keyword-list{display:flex;flex-direction:column;gap:clamp(18px,2vw,28px)}
+  .keyword-list .kw{
+    display:grid;grid-template-columns:150px 1fr;
+    align-items:baseline;gap:clamp(20px,2vw,32px);
+  }
+  .keyword-list .kw .term{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(12px,1vw,15px);font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;
+  }
+  .keyword-list .kw .val{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(18px,1.5vw,24px);color:var(--ink);line-height:1.32;
+  }
+  .keyword-list .kw .val em{color:var(--accent);font-style:normal;font-weight:500}
+  .keyword-list .kw .val span{
+    color:var(--muted);font-family:var(--sans);
+    font-size:.65em;font-style:normal;letter-spacing:.02em;
+    font-weight:400;display:block;margin-top:6px;
+  }
+
+  /* ═══ ZH quote helper (interview cases) ═══ */
+  .zh-original{
+    margin-top:clamp(14px,1.5vw,22px);padding-top:clamp(14px,1.5vw,22px);
+    border-top:1px dashed var(--rule);
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(12px,1vw,15px);line-height:1.65;letter-spacing:.02em;
+    font-weight:400;
+  }
+  .zh-original::before{
+    content:"中文原文 · Original";display:block;margin-bottom:6px;
+    font-family:var(--sans);color:var(--accent);
+    font-size:.75em;letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+
+  /* ═══ REFERENCES PAGE ═══ */
+  .refs-page .content{justify-content:flex-start;padding-top:clamp(16px,1.5vw,24px)}
+  .refs-list{
+    columns:2;column-gap:clamp(40px,4vw,64px);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(11.5px,.95vw,14px);line-height:1.5;
+  }
+  .refs-list p{margin:0 0 clamp(10px,1.2vw,15px);break-inside:avoid;padding-left:1.4em;text-indent:-1.4em}
+  .refs-list em{font-family:var(--serif);font-style:italic;color:var(--muted)}
+  .refs-list b{font-weight:600;color:var(--ink)}
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  @keyframes scaleIn{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:scale(1)}}
+
+  /* base opacity so animations can fade in */
+  .slide .title-band,.slide .content,
+  .slide.cover .cover-main,.slide.qa .qa-main{opacity:0}
+
+  .slide.active .title-band{animation:fadeInUp .55s .05s both ease-out}
+  .slide.active .content{animation:fadeInUp .55s .18s both ease-out}
+  .slide.active.cover .cover-main{animation:fadeInUp .7s .12s both ease-out}
+  .slide.active.qa .qa-main{animation:fadeInUp .7s .15s both ease-out}
+
+  /* staggered list items */
+  .slide.active .stack-3 .row{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .stack-3 .row:nth-child(1){animation-delay:.32s}
+  .slide.active .stack-3 .row:nth-child(2){animation-delay:.47s}
+  .slide.active .stack-3 .row:nth-child(3){animation-delay:.62s}
+
+  .slide.active .q-grid .q{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .q-grid .q:nth-child(1){animation-delay:.35s}
+  .slide.active .q-grid .q:nth-child(2){animation-delay:.5s}
+  .slide.active .q-grid .q:nth-child(3){animation-delay:.65s}
+
+  .slide.active .methods .m{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .methods .m:nth-child(1){animation-delay:.32s}
+  .slide.active .methods .m:nth-child(2){animation-delay:.42s}
+  .slide.active .methods .m:nth-child(3){animation-delay:.52s}
+  .slide.active .methods .m:nth-child(4){animation-delay:.62s}
+
+  .slide.active .participants .p{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .participants .p:nth-child(1){animation-delay:.32s}
+  .slide.active .participants .p:nth-child(2){animation-delay:.47s}
+  .slide.active .participants .p:nth-child(3){animation-delay:.62s}
+
+  .slide.active .framework-3 .mech{opacity:0;animation:fadeInUp .55s both ease-out}
+  .slide.active .framework-3 .mech:nth-child(1){animation-delay:.32s}
+  .slide.active .framework-3 .mech:nth-child(2){animation-delay:.47s}
+  .slide.active .framework-3 .mech:nth-child(3){animation-delay:.62s}
+  .slide.active .framework-3 .converge{opacity:0;animation:scaleIn .5s .82s both ease-out}
+
+  .slide.active .care-chain .cnode{opacity:0;animation:fadeInUp .4s both ease-out}
+  .slide.active .care-chain .carrow{opacity:0;animation:fadeIn .4s both ease-out}
+  .slide.active .care-chain > *:nth-child(1){animation-delay:.4s}
+  .slide.active .care-chain > *:nth-child(2){animation-delay:.55s}
+  .slide.active .care-chain > *:nth-child(3){animation-delay:.7s}
+  .slide.active .care-chain > *:nth-child(4){animation-delay:.85s}
+  .slide.active .care-chain > *:nth-child(5){animation-delay:1s}
+
+  .slide.active .flow .node,.slide.active .flow .arrow{opacity:0;animation:fadeIn .35s both ease-out}
+  .slide.active .flow > *:nth-child(1){animation-delay:.35s}
+  .slide.active .flow > *:nth-child(2){animation-delay:.45s}
+  .slide.active .flow > *:nth-child(3){animation-delay:.55s}
+  .slide.active .flow > *:nth-child(4){animation-delay:.65s}
+  .slide.active .flow > *:nth-child(5){animation-delay:.75s}
+  .slide.active .flow > *:nth-child(6){animation-delay:.85s}
+  .slide.active .flow > *:nth-child(7){animation-delay:.95s}
+  .slide.active .flow > *:nth-child(8){animation-delay:1.05s}
+  .slide.active .flow > *:nth-child(9){animation-delay:1.2s;animation-duration:.5s}
+
+  .slide.active .contents ol li{opacity:0;animation:fadeInUp .4s both ease-out}
+  .slide.active .contents ol li:nth-child(1){animation-delay:.28s}
+  .slide.active .contents ol li:nth-child(2){animation-delay:.36s}
+  .slide.active .contents ol li:nth-child(3){animation-delay:.44s}
+  .slide.active .contents ol li:nth-child(4){animation-delay:.52s}
+  .slide.active .contents ol li:nth-child(5){animation-delay:.6s}
+  .slide.active .contents ol li:nth-child(6){animation-delay:.68s}
+
+  .slide.active .keyword-list .kw{opacity:0;animation:fadeInUp .45s both ease-out}
+  .slide.active .keyword-list .kw:nth-child(1){animation-delay:.3s}
+  .slide.active .keyword-list .kw:nth-child(2){animation-delay:.4s}
+  .slide.active .keyword-list .kw:nth-child(3){animation-delay:.5s}
+  .slide.active .keyword-list .kw:nth-child(4){animation-delay:.6s}
+  .slide.active .keyword-list .kw:nth-child(5){animation-delay:.7s}
+
+  .slide.active .conclusion .item{opacity:0;animation:fadeInUp .5s both ease-out}
+  .slide.active .conclusion .item:nth-child(1){animation-delay:.3s}
+  .slide.active .conclusion .item:nth-child(2){animation-delay:.42s}
+  .slide.active .conclusion .item:nth-child(3){animation-delay:.54s}
+  .slide.active .conclusion .item:nth-child(4){animation-delay:.66s}
+
+  @media (prefers-reduced-motion: reduce){
+    .slide .title-band,.slide .content,.slide.cover .cover-main,.slide.qa .qa-main{opacity:1 !important;animation:none !important}
+    .slide.active *{animation:none !important;opacity:1 !important;transform:none !important}
+  }
+
+  /* ═══ DUAL QUOTES (slide 10 · school domain) ═══ */
+  .dual-quotes{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3vw,48px);
+    margin-bottom:clamp(20px,2vw,30px);
+  }
+  .dual-quotes .qcard{
+    display:flex;flex-direction:column;gap:clamp(10px,1.1vw,14px);
+    padding-left:clamp(20px,2vw,28px);border-left:3px solid var(--accent);
+  }
+  .dual-quotes .qcontext{
+    font-family:var(--sans);color:var(--accent-2,var(--accent));
+    font-size:clamp(11px,.9vw,13px);letter-spacing:.22em;
+    text-transform:uppercase;font-weight:700;line-height:1.3;
+  }
+  .dual-quotes .qcontext small{
+    display:block;font-family:var(--sans);color:var(--muted);
+    font-size:1.05em;letter-spacing:.02em;font-style:normal;
+    text-transform:none;font-weight:400;margin-top:6px;line-height:1.5;
+  }
+  .dual-quotes blockquote{
+    margin:0;font-family:var(--serif);font-weight:500;font-style:italic;
+    font-size:clamp(19px,1.7vw,26px);line-height:1.3;color:var(--ink);
+    letter-spacing:-.003em;
+  }
+  .dual-quotes .qattr{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.9vw,13px);letter-spacing:.22em;
+    text-transform:uppercase;font-weight:700;
+  }
+  .dual-quotes .zh-original{margin-top:0;padding-top:10px}
+
+  .analysis-strip{
+    padding-top:clamp(16px,1.8vw,24px);
+    border-top:1px solid var(--rule);
+  }
+  .analysis-strip .head{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.95vw,13px);letter-spacing:.22em;
+    text-transform:uppercase;font-weight:700;margin-bottom:clamp(10px,1.2vw,14px);
+  }
+  .analysis-strip .arg{
+    margin:0;font-family:var(--serif);font-weight:500;font-style:normal;
+    font-size:clamp(17px,1.5vw,24px);color:var(--ink);line-height:1.36;
+    padding-left:clamp(16px,1.6vw,22px);border-left:2px solid var(--accent);
+    letter-spacing:-.003em;
+  }
+  .analysis-strip .arg em{color:var(--accent);font-style:normal;font-weight:600}
+
+  /* ═══ QUOTE CASE — case slide layout ═══ */
+  .case{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,5vw,88px);height:100%;
+  }
+  .case .quote-block{
+    display:flex;flex-direction:column;justify-content:center;gap:20px;
+    padding-right:clamp(32px,3vw,52px);border-right:1px solid var(--rule);
+  }
+  .case .qmark{
+    font-family:var(--serif);font-size:clamp(60px,6vw,110px);
+    line-height:.6;color:var(--accent);opacity:.7;
+  }
+  .case blockquote{
+    margin:0;font-family:var(--serif);font-weight:500;
+    font-size:clamp(22px,2.2vw,34px);line-height:1.25;color:var(--ink);
+    letter-spacing:-.003em;
+  }
+  .case blockquote em{font-style:italic;color:var(--accent);font-weight:500}
+  .case .attribution{
+    font-family:var(--sans);font-size:clamp(12px,1vw,14px);
+    color:var(--accent);letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+  .case .attribution small{display:block;font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:.02em;font-size:1.15em;color:var(--muted);font-weight:400;margin-top:6px}
+  .case .analysis{
+    display:flex;flex-direction:column;gap:clamp(18px,2vw,28px);justify-content:center;
+  }
+  .case .analysis .head{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.9vw,13px);letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+  .case .analysis ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0}
+  .case .analysis li{
+    padding:clamp(12px,1.4vh,20px) 0;border-top:1px solid var(--rule);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.15vw,18px);line-height:1.45;font-weight:500;
+  }
+  .case .analysis li:last-child{border-bottom:1px solid var(--rule)}
+  .case .analysis p.arg{
+    font-family:var(--serif);font-weight:500;font-style:italic;
+    font-size:clamp(18px,1.6vw,26px);color:var(--ink);line-height:1.35;margin:0;
+    padding-left:16px;border-left:2px solid var(--accent);
+  }
+
+  /* ═══ SCHEDULE (Yu's timeline) ═══ */
+  .schedule-slide{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,5vw,88px);height:100%}
+  .schedule-slide .left{display:flex;flex-direction:column;justify-content:center;gap:20px}
+  .schedule-slide .left .lab{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.9vw,13px);letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+  .schedule-slide .left h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(28px,2.6vw,44px);line-height:1.1;color:var(--ink);margin:0;
+  }
+  .schedule-slide .left blockquote{
+    margin:0;font-family:var(--serif);font-style:italic;color:var(--ink);
+    font-size:clamp(19px,1.7vw,26px);line-height:1.3;
+    padding-left:clamp(20px,2vw,28px);border-left:3px solid var(--accent);
+    letter-spacing:-.003em;
+  }
+  .schedule-slide .left .attr{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.9vw,13px);letter-spacing:.2em;text-transform:uppercase;font-weight:700;
+  }
+  .schedule-slide .right{
+    display:flex;flex-direction:column;justify-content:center;gap:0;
+    padding-left:clamp(28px,3vw,48px);border-left:1px solid var(--rule);
+  }
+  .schedule-slide .right .row{
+    display:grid;grid-template-columns:80px 1fr;gap:20px;align-items:baseline;
+    padding:clamp(12px,1.4vh,20px) 0;border-top:1px solid var(--rule);
+  }
+  .schedule-slide .right .row:last-child{border-bottom:1px solid var(--rule)}
+  .schedule-slide .right .row .t{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(14px,1.15vw,18px);font-weight:600;letter-spacing:.06em;
+    font-variant-numeric:tabular-nums;
+  }
+  .schedule-slide .right .row .a{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.15vw,18px);font-weight:500;line-height:1.35;
+  }
+  .schedule-slide .right .note{
+    margin-top:clamp(18px,2vw,28px);
+    font-family:var(--serif);font-style:italic;color:var(--muted);
+    font-size:clamp(15px,1.3vw,20px);line-height:1.4;
+  }
+
+  /* ═══ TWO-QUOTE (Ch.3) ═══ */
+  .two-quote{display:grid;grid-template-rows:1fr 1fr;gap:clamp(24px,3vw,44px);height:100%}
+  .two-quote .q-row{
+    display:grid;grid-template-columns:2fr 1fr;gap:clamp(28px,3vw,48px);
+    padding-bottom:clamp(20px,2vw,32px);border-bottom:1px solid var(--rule);
+    align-items:center;
+  }
+  .two-quote .q-row:last-child{border-bottom:none;padding-bottom:0}
+  .two-quote blockquote{
+    margin:0;font-family:var(--serif);font-weight:500;
+    font-size:clamp(20px,1.9vw,30px);line-height:1.3;color:var(--ink);
+    padding-left:clamp(28px,2.5vw,40px);border-left:3px solid var(--accent);
+  }
+  .two-quote .meta .attr{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.9vw,13px);letter-spacing:.22em;text-transform:uppercase;font-weight:700;
+  }
+  .two-quote .meta .desc{
+    margin-top:12px;font-family:var(--sans);color:var(--muted);
+    font-size:clamp(13px,1.05vw,17px);line-height:1.5;
+  }
+
+  /* ═══ SECTION DIVIDER PAGE ═══ */
+  .section-divider{
+    padding-top:clamp(50px,5vw,86px);
+    justify-content:center;
+  }
+  .section-divider .divider-main{
+    max-width:min(84vw,1240px);
+    display:flex;flex-direction:column;
+    gap:clamp(18px,2vw,32px);
+  }
+  .section-divider .divider-num{
+    font-family:var(--serif);color:var(--accent);
+    font-size:clamp(88px,10vw,168px);line-height:.9;font-weight:500;
+    letter-spacing:-.02em;
+  }
+  .section-divider .divider-rule{
+    height:2px;width:min(50vw,600px);background:var(--accent);
+  }
+  .section-divider .divider-title{
+    font-family:var(--serif);color:var(--ink);
+    font-size:clamp(46px,5.2vw,84px);line-height:1.02;
+    font-weight:500;letter-spacing:-.005em;
+  }
+  .section-divider .divider-sub{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(17px,1.6vw,24px);line-height:1.4;
+    max-width:900px;font-weight:400;letter-spacing:.01em;
+    margin-top:clamp(6px,.7vw,12px);
+  }
+  .section-divider footer{border-top:1px solid var(--rule)}
+  .slide.active.section-divider .divider-main{animation:fadeInUp .7s .12s both ease-out}
+
+  /* ═══ SECTION EYEBROW (5.1 / 5.2 / 5.3 / 5.4) — used inside title-band ═══ */
+  .sec-eyebrow{
+    display:flex;align-items:center;gap:14px;margin-bottom:clamp(10px,1vw,14px);
+  }
+  .sec-eyebrow .sec-num{
+    background:var(--accent);color:var(--paper);
+    padding:6px 12px;font-family:var(--serif);font-weight:500;
+    font-size:clamp(17px,1.5vw,22px);line-height:1;
+    letter-spacing:.01em;
+  }
+  .sec-eyebrow .sec-what{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(12px,1vw,14px);letter-spacing:.24em;
+    text-transform:uppercase;font-weight:700;
+  }
+  /* legacy .section-badge kept for animation-target parity but visually hidden */
+  .section-badge{display:none}
+
+  /* ═══ QUESTION LINE ═══ */
+  .question-line{
+    margin-top:clamp(4px,.6vw,10px);
+    max-width:1200px;
+  }
+  .question-line .label{
+    font-family:var(--serif);font-style:italic;color:var(--accent);
+    font-size:clamp(15px,1.25vw,18px);margin-bottom:6px;display:block;
+  }
+  .question-line .text{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(15px,1.3vw,20px);line-height:1.5;font-weight:400;
+  }
+
+  /* ═══ KEY INSIGHT box ═══ */
+  .key-insight{
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(26px,2.6vw,42px);
+    padding:clamp(22px,2.4vw,32px) clamp(26px,2.6vw,38px);
+    background:rgba(212,196,164,.32);
+    align-items:stretch;margin-top:clamp(22px,2.2vw,34px);
+  }
+  .key-insight .k-label{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(14px,1.15vw,17px);font-weight:700;
+    letter-spacing:.2em;line-height:1.2;
+    padding-right:clamp(22px,2.2vw,32px);
+    border-right:1px solid var(--rule-strong);
+    display:flex;align-items:center;white-space:nowrap;text-transform:uppercase;
+  }
+  .key-insight .k-content{display:flex;flex-direction:column;gap:8px;padding:4px 0}
+  .key-insight .k-en{
+    font-family:var(--serif);color:var(--ink);
+    font-size:clamp(22px,1.95vw,32px);line-height:1.32;font-weight:500;
+    letter-spacing:-.003em;
+  }
+  .key-insight .k-en em{color:var(--accent);font-style:italic;font-weight:600}
+  .key-insight .k-zh{display:none}
+
+  /* ═══ 5.1 · FLOW 3-COL (School → Border Moves → Teacher) ═══ */
+  .flow-3col{
+    display:grid;grid-template-columns:1fr auto 1fr auto 1fr;
+    gap:clamp(10px,1.2vw,18px);align-items:stretch;
+    margin-top:clamp(20px,2.2vw,32px);
+  }
+  .flow-3col .box{
+    background:rgba(255,255,255,.4);border:1px solid var(--rule);
+    padding:clamp(14px,1.6vw,22px);
+    display:flex;flex-direction:column;gap:12px;
+  }
+  .flow-3col .box .box-head{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(11px,.95vw,13px);letter-spacing:.24em;
+    text-transform:uppercase;font-weight:700;text-align:center;
+    padding-bottom:10px;border-bottom:1px solid var(--rule);line-height:1.2;
+  }
+  .flow-3col .box .box-head small{
+    display:block;color:var(--muted);letter-spacing:.02em;
+    font-size:.92em;margin-top:4px;font-weight:500;text-transform:none;
+  }
+  .flow-3col .box .items{display:flex;flex-direction:column;gap:clamp(10px,1.1vw,14px);flex:1}
+  .flow-3col .box .item{
+    display:flex;flex-direction:column;gap:1px;
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.2vw,18px);line-height:1.35;font-weight:500;
+  }
+  .flow-3col .box .item small{
+    color:var(--muted);font-size:.82em;font-weight:400;
+  }
+  .flow-3col .box .item.with-icon{
+    display:grid;grid-template-columns:22px 1fr;gap:8px;align-items:baseline;
+  }
+  .flow-3col .box .item.with-icon .icon{color:var(--accent);font-size:14px;text-align:center;line-height:1}
+  .flow-3col > .arrow{
+    color:var(--accent);font-size:clamp(20px,2vw,28px);
+    display:flex;align-items:center;justify-content:center;font-weight:400;
+  }
+
+  /* ═══ 5.2 · STAGES 3 (Time · Body · Kinship) ═══ */
+  .stages-3{
+    display:grid;grid-template-columns:1fr auto 1fr auto 1fr;
+    gap:clamp(16px,1.8vw,28px);align-items:start;
+    margin-top:clamp(20px,2.2vw,32px);
+  }
+  .stages-3 .stage{
+    display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;
+  }
+  .stages-3 .stage .num{
+    width:clamp(36px,3vw,46px);height:clamp(36px,3vw,46px);
+    border-radius:50%;display:flex;align-items:center;justify-content:center;
+    color:#fff;font-family:var(--serif);font-weight:500;
+    font-size:clamp(16px,1.5vw,22px);
+  }
+  .stages-3 .stage.s1 .num{background:#3D6270}
+  .stages-3 .stage.s2 .num{background:#8B7C3B}
+  .stages-3 .stage.s3 .num{background:#6E3A46}
+  .stages-3 .stage .icon{
+    font-size:clamp(28px,2.6vw,38px);line-height:1;color:var(--ink);opacity:.8;
+  }
+  .stages-3 .stage .name{
+    font-family:var(--sans);font-weight:700;letter-spacing:.24em;text-transform:uppercase;
+    font-size:clamp(13px,1.15vw,16px);color:var(--accent);
+  }
+  .stages-3 .stage .name small{
+    display:block;font-family:var(--sans);color:var(--muted);
+    font-size:.9em;letter-spacing:.02em;margin-top:3px;font-weight:500;text-transform:none;
+  }
+  .stages-3 .stage .desc{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(15px,1.3vw,19px);line-height:1.45;font-weight:400;
+    max-width:260px;
+  }
+  .stages-3 .stage .desc-zh{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(11.5px,.95vw,13px);line-height:1.5;margin-top:6px;max-width:230px;
+  }
+  .stages-3 > .arrow{
+    color:var(--accent);font-size:clamp(20px,1.8vw,26px);
+    display:flex;align-items:center;justify-content:center;
+    padding-top:clamp(22px,2.2vw,36px);
+  }
+
+  /* ═══ 5.3 · SPLIT-TWO (Border Built + Acts of Redrawing) ═══ */
+  .split-two{
+    display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,3vw,52px);
+    margin-top:clamp(20px,2.2vw,32px);
+  }
+  .split-two h4{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(12px,1vw,14px);font-weight:700;
+    letter-spacing:.24em;text-transform:uppercase;margin:0 0 clamp(14px,1.5vw,20px);
+    padding-bottom:10px;border-bottom:1px solid var(--rule);
+    text-align:center;line-height:1.3;
+  }
+  .split-two h4 small{
+    display:block;color:var(--muted);letter-spacing:.02em;
+    font-size:.9em;margin-top:4px;font-weight:500;text-transform:none;
+  }
+  .split-two ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:clamp(11px,1.2vw,16px)}
+  .split-two li{
+    display:grid;grid-template-columns:26px 1fr;gap:14px;align-items:baseline;
+  }
+  .split-two li .li-icon{
+    color:var(--accent);font-size:clamp(15px,1.25vw,18px);
+    text-align:center;line-height:1.2;
+  }
+  .split-two li .li-text{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(15px,1.3vw,19px);line-height:1.45;font-weight:500;
+  }
+  .split-two li .li-text em{color:var(--accent);font-style:normal;font-weight:600}
+  .split-two li .li-zh{
+    color:var(--muted);font-family:var(--sans);
+    font-size:.82em;margin-top:2px;line-height:1.5;font-weight:400;
+  }
+
+  /* ═══ Hide ZH annotations across conclusion slides (14–17) ═══ */
+  .flow-3col .box .box-head small,
+  .flow-3col .box .item small,
+  .stages-3 .stage .name small,
+  .stages-3 .stage .desc-zh,
+  .split-two h4 small,
+  .split-two .li-zh,
+  .core-side h4 small,
+  .core-diagram .satellite small,
+  .core-diagram .center-node small,
+  .redraw-list .r-item .r-label small,
+  .redraw-list .r-item .r-zh,
+  .section-badge .heading .top-label small,
+  .question-line .label small{display:none}
+
+  /* ═══ 5.4 · CORE (Reality diagram + Redraw list) ═══ */
+  .core-split{
+    display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(28px,3vw,48px);
+    margin-top:clamp(18px,2vw,28px);align-items:start;
+  }
+  .core-side h4{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(12px,1vw,14px);font-weight:700;
+    letter-spacing:.24em;text-transform:uppercase;margin:0 0 clamp(16px,1.8vw,24px);
+    text-align:center;padding-bottom:10px;border-bottom:1px solid var(--rule);
+  }
+  .core-side h4 small{
+    display:block;color:var(--muted);letter-spacing:.02em;
+    font-size:.9em;margin-top:4px;font-weight:500;text-transform:none;
+  }
+  .core-diagram{
+    position:relative;height:clamp(300px,32vh,400px);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .core-diagram .center-node{
+    padding:clamp(18px,1.8vw,26px) clamp(24px,2.4vw,34px);
+    background:var(--accent);color:var(--paper);
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(20px,1.8vw,28px);text-align:center;
+    z-index:2;line-height:1.15;
+  }
+  .core-diagram .center-node small{
+    display:block;font-family:var(--sans);color:var(--paper);
+    font-size:.5em;letter-spacing:.14em;text-transform:uppercase;
+    margin-top:6px;opacity:.9;font-weight:600;
+  }
+  .core-diagram .satellite{
+    position:absolute;text-align:center;
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.2vw,17px);line-height:1.4;
+    max-width:190px;padding:8px;
+  }
+  .core-diagram .satellite strong{
+    display:block;font-family:var(--sans);font-weight:700;
+    font-size:clamp(13px,1.15vw,16px);color:var(--accent);
+    letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px;
+  }
+  .core-diagram .satellite small{
+    display:block;color:var(--muted);font-size:.9em;margin-top:3px;
+  }
+  .core-diagram .sat-top{top:0;left:50%;transform:translateX(-50%)}
+  .core-diagram .sat-bl{bottom:0;left:0}
+  .core-diagram .sat-br{bottom:0;right:0}
+  .core-diagram svg.connectors{
+    position:absolute;inset:0;width:100%;height:100%;pointer-events:none;
+  }
+
+  .redraw-list{display:flex;flex-direction:column;gap:clamp(12px,1.3vw,18px)}
+  .redraw-list .r-item{
+    display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center;
+    padding:clamp(11px,1.2vw,16px) clamp(14px,1.5vw,20px);
+    background:rgba(255,255,255,.4);border:1px solid var(--rule);
+  }
+  .redraw-list .r-item .r-icon{
+    font-size:clamp(22px,2vw,30px);color:var(--accent);text-align:center;line-height:1;
+  }
+  .redraw-list .r-item .r-label{
+    font-family:var(--sans);color:var(--accent);
+    font-size:clamp(12px,1.05vw,15px);letter-spacing:.22em;
+    text-transform:uppercase;font-weight:700;
+  }
+  .redraw-list .r-item .r-label small{
+    color:var(--muted);letter-spacing:.02em;font-size:.9em;
+    margin-left:8px;text-transform:none;font-weight:500;
+  }
+  .redraw-list .r-item .r-en{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(15px,1.3vw,19px);line-height:1.4;margin-top:4px;font-weight:500;
+  }
+  .redraw-list .r-item .r-zh{
+    font-family:var(--sans);color:var(--muted);
+    font-size:clamp(11px,.9vw,13px);line-height:1.4;margin-top:2px;
+  }
+
+  /* ═══ CONCLUSION list ═══ */
+  .conclusion{
+    display:flex;flex-direction:column;gap:clamp(16px,1.8vw,24px);
+  }
+  .conclusion .item{
+    display:grid;grid-template-columns:170px 1fr;gap:clamp(24px,3vw,44px);
+    align-items:baseline;padding-bottom:clamp(14px,1.6vw,22px);
+    border-bottom:1px solid var(--rule);
+  }
+  .conclusion .item:last-child{border-bottom:none}
+  .conclusion .item .idx{
+    display:flex;flex-direction:column;gap:8px;
+    font-family:var(--serif);color:var(--accent);
+    font-size:clamp(22px,1.9vw,30px);font-style:italic;font-weight:500;line-height:1;
+  }
+  .conclusion .item .idx small{
+    font-family:var(--sans);color:var(--muted);
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    font-weight:700;font-style:normal;line-height:1.2;
+  }
+  .conclusion .item h4{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(20px,1.7vw,28px);color:var(--ink);margin:0 0 8px;line-height:1.2;
+  }
+  .conclusion .item h4 em{font-style:italic;color:var(--accent);font-weight:500}
+  .conclusion .item p{
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(14px,1.15vw,18px);line-height:1.55;margin:0;font-weight:400;
+  }
+  .conclusion .item p em{color:var(--accent);font-style:italic;font-weight:600}
+
+  /* ═══ TWO-COL (contributions / limitations) ═══ */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,4vw,72px);height:100%;align-items:start}
+  .two-col > div{display:flex;flex-direction:column;gap:16px}
+  .two-col h3{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(28px,2.4vw,42px);color:var(--ink);
+    margin:0 0 clamp(20px,2.2vw,32px);
+    padding-bottom:clamp(14px,1.5vw,22px);
+    border-bottom:1px solid var(--rule-strong);
+    letter-spacing:-.005em;line-height:1.1;
+  }
+  .two-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:0}
+  .two-col li{
+    padding:clamp(12px,1.4vh,18px) 0;border-top:1px solid var(--rule);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(13px,1.05vw,17px);line-height:1.5;font-weight:500;
+  }
+  .two-col li:last-child{border-bottom:1px solid var(--rule)}
+  .two-col li em{color:var(--accent);font-style:normal;font-weight:600}
+
+  /* ═══ REFERENCES ═══ */
+  .references .content{justify-content:flex-start}
+  .references .ref-list{
+    columns:3;column-gap:clamp(40px,4vw,64px);
+    font-family:var(--sans);color:var(--ink);
+    font-size:clamp(10px,.85vw,13px);line-height:1.4;
+  }
+  .references .ref-list p{margin:0 0 12px;break-inside:avoid}
+  .references .ref-list em{font-family:var(--serif);font-style:italic;color:var(--muted)}
+
+  /* ═══ THANKS / Q&A ═══ */
+  .qa{padding-top:clamp(60px,6vw,110px)}
+  .qa-head{
+    position:absolute;top:clamp(38px,3.6vw,58px);
+    left:clamp(56px,5vw,96px);right:clamp(56px,5vw,96px);
+    display:flex;justify-content:space-between;align-items:flex-start;gap:32px;
+  }
+  .qa-head .logo{
+    height:clamp(48px,4.6vw,72px);width:auto;object-fit:contain;
+    filter:brightness(.85);flex:none;display:block;
+  }
+  .qa-head .meta{
+    text-align:right;font-family:var(--sans);
+    font-size:clamp(12px,1vw,15px);color:var(--muted);
+    line-height:1.55;letter-spacing:.03em;font-weight:500;
+  }
+  .qa-head .meta .head-row{
+    font-size:clamp(11px,.9vw,13px);color:var(--ink);
+    text-transform:uppercase;letter-spacing:.16em;font-weight:700;
+  }
+  .qa-head .meta .sub-row{margin-top:8px;color:var(--muted)}
+  .qa .qa-main{margin-top:clamp(90px,12vh,180px);max-width:min(84vw,1240px)}
+  .qa h1{
+    font-family:var(--serif);font-weight:500;
+    font-size:clamp(72px,8.5vw,140px);line-height:.96;
+    letter-spacing:-.01em;color:var(--ink);margin:0;
+  }
+  .qa .qa-sub{
+    margin-top:clamp(24px,3vw,42px);max-width:960px;
+    font-family:var(--serif);font-style:italic;
+    font-size:clamp(22px,2.2vw,36px);color:var(--muted);line-height:1.22;
+  }
+  .qa .qa-rule{height:2px;width:min(60vw,760px);background:var(--accent);margin:clamp(28px,3vw,48px) 0 clamp(18px,2vw,28px)}
+  .qa .qa-meta{color:var(--muted);font-size:clamp(14px,1.15vw,18px);letter-spacing:.04em;line-height:1.6}
+  .qa .qa-meta strong{color:var(--ink);font-weight:600}
+
+  /* ═══ BRAND (cover + qa) ═══ */
+  .brand{
+    position:absolute;top:clamp(30px,3vw,50px);left:clamp(48px,4.5vw,88px);
+    display:flex;align-items:center;z-index:5;
+  }
+  .brand img{
+    height:clamp(46px,4.6vw,74px);width:auto;object-fit:contain;
+    filter:brightness(.85);
+  }
+
+  /* ═══ Contents · clickable ═══ */
+  .contents li{cursor:pointer;transition:background .18s}
+  .contents li:hover{background:rgba(128,108,84,.06)}
+  .contents li:hover .num{color:var(--ink)}
+  .contents li .txt{transition:transform .16s}
+  .contents li:hover .txt{transform:translateX(4px)}
+
+  /* ═══ Progress nav (top center · same line as label / page-num) ═══ */
+  .progress-nav{
+    position:absolute;top:clamp(30px,3.1vw,50px);left:50%;transform:translateX(-50%);
+    display:flex;align-items:center;gap:clamp(4px,.6vw,10px);z-index:6;
+  }
+  .progress-nav a{
+    padding:8px clamp(6px,.75vw,12px);color:var(--muted);
+    font-family:var(--sans);font-size:clamp(10px,.85vw,12px);
+    font-weight:700;letter-spacing:.22em;
+    text-decoration:none;cursor:pointer;
+    border-top:2px solid transparent;
+    transition:color .2s,border-color .2s;
+    min-width:32px;text-align:center;line-height:1;
+  }
+  .progress-nav a:hover{color:var(--ink)}
+  .progress-nav a.current{color:var(--ink);border-top-color:var(--accent)}
+  .progress-nav .sep{color:var(--rule);font-size:9px;user-select:none;line-height:1}
+
+  /* ═══ Back to Contents (qa page) ═══ */
+  .back-toc{
+    position:absolute;top:clamp(30px,3.2vw,50px);right:clamp(48px,4.5vw,88px);
+    display:inline-flex;align-items:center;gap:8px;
+    padding:9px 15px;
+    background:rgba(255,255,255,.5);border:1px solid var(--rule-strong);
+    color:var(--ink);font-family:var(--sans);
+    font-size:clamp(10px,.85vw,12px);font-weight:700;
+    letter-spacing:.2em;text-transform:uppercase;
+    text-decoration:none;cursor:pointer;
+    transition:background .18s;z-index:6;
+  }
+  .back-toc::before{content:"↑";font-family:var(--serif);font-size:1.4em;line-height:.6}
+  .back-toc:hover{background:#fff}
+
+  /* ═══ OVERVIEW MODE (Esc) ═══ */
+  body.overview{background:#1e1c17;overflow:auto;height:auto}
+  body.overview .deck{
+    transform:none !important;transition:none !important;
+    display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:16px;padding:24px;
+    width:100%;height:auto;
+  }
+  body.overview .slide{
+    flex:none;
+    zoom:.235;
+    cursor:pointer;
+    outline:1px solid rgba(255,255,255,.15);
+    outline-offset:-1px;
+    transition:outline-color .18s;
+  }
+  body.overview .slide:hover{outline-color:rgba(244,238,226,.7)}
+  body.overview .nav,
+  body.overview .back-toc,
+  body.overview .progress-nav{display:none}
+  .overview-hint{
+    position:fixed;top:12px;left:50%;transform:translateX(-50%);
+    padding:8px 18px;background:rgba(20,18,15,.94);color:#f4eee2;
+    font-family:var(--sans);font-size:11px;letter-spacing:.22em;
+    text-transform:uppercase;font-weight:600;border-radius:20px;
+    z-index:100;display:none;
+  }
+  body.overview .overview-hint{display:block}
+
+  /* ═══ NAV ═══ */
+  .nav{position:fixed;z-index:20;right:24px;bottom:20px;display:flex;gap:8px;align-items:center;font:12px/1 var(--sans);color:var(--muted)}
+  .nav button{
+    background:rgba(255,255,255,.6);border:1px solid var(--rule-strong);
+    width:32px;height:32px;border-radius:50%;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;color:var(--ink);font-size:14px;
+  }
+  .nav button:hover{background:#fff}
+  .nav .idx{padding:0 8px;font-variant-numeric:tabular-nums}
+  .nav .overview-btn{width:auto;padding:0 12px;font-size:10px;letter-spacing:.16em;font-weight:700;text-transform:uppercase;height:32px}
+
+  @media (prefers-reduced-motion: reduce){.deck{transition:none}}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/pako@2.1.0/dist/pako.min.js"></script>
 </head>
 <body>
-<div class="status"><b>Bordered Teacher-Mothers</b><span id="status">Loading presentation...</span></div>
+<div class="deck" id="deck">
+
+  <!-- 01 · COVER -->
+  <section class="slide cover">
+    <div class="cover-head">
+      <div class="logo logo-text">Asian Center<br>for Women's Studies</div>
+      <div class="meta">
+        <div class="head-row">ACWS 2026 &nbsp;·&nbsp; Panel 10-4 &nbsp;·&nbsp; Zoom Room 9</div>
+        <div class="sub-row">Panel · Affective Enclosures:<br>Constructing and Resisting Gendered Borders in Digital and Institutional Spaces</div>
+      </div>
+    </div>
+    <div class="cover-main">
+      <h1>Bordered<br>Teacher-Mothers</h1>
+      <div class="subtitle">Institutional, Reproductive, and Affective Bordering among Women Primary School Teachers in China</div>
+      <div class="cover-rule"></div>
+      <div class="cover-meta"><strong>Zhuo Chang</strong> &nbsp; · &nbsp; University of Oxford &nbsp; · &nbsp; July 10, 2026</div>
+    </div>
+    <footer>
+      <span></span>
+      <span>01 / 25</span>
+    </footer>
+  </section>
+
+  <!-- 02 · CONTENTS -->
+  <section class="slide contents">
+    <div class="label">Contents</div>
+    <div class="page-num">02 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Contents</h1>
+    </div>
+    <div class="content">
+      <ol>
+        <li data-target="2"><span class="num">01</span><span class="txt">Research Background &amp; Questions</span></li>
+        <li data-target="4"><span class="num">02</span><span class="txt">Research Methodology</span></li>
+        <li data-target="6"><span class="num">03</span><span class="txt">Analytical Framework</span></li>
+        <li data-target="9"><span class="num">04</span><span class="txt">Research Findings</span></li>
+        <li data-target="13"><span class="num">05</span><span class="txt">Discussion &amp; Conclusion</span></li>
+        <li data-target="14"><span class="num">06</span><span class="txt">Contributions &amp; Limitations</span></li>
+      </ol>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026</span></footer>
+  </section>
+
+  <!-- 03 · SECTION DIVIDER · 01 · Research Background & Questions -->
+  <section class="slide section-divider">
+    <div class="page-num">03 / 25</div>
+    <div class="divider-main">
+      <div class="divider-num">01</div>
+      <div class="divider-rule"></div>
+      <div class="divider-title">Research Background &amp; Questions</div>
+      <div class="divider-sub">Structural, cultural, and policy pressures on women primary teachers — and the three sub-questions that guide the study.</div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 03 / 25</span></footer>
+  </section>
+
+  <!-- 04 · BACKGROUND -->
+  <section class="slide">
+    <div class="label">01 · Research Background</div>
+    <div class="page-num">04 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">A Feminised Profession Under Pressure</h1>
+      <div class="slide-sub">Structural · Cultural · Policy</div>
+    </div>
+    <div class="content">
+      <div class="stack-3">
+        <div class="row">
+          <div class="k">Structural<small>Reality</small></div>
+          <div class="v"><em>~70%</em> women teachers in compulsory education; <em>74.48%</em> in primary schools (MoE 2023; ~75% in 2024). Underrepresented in leadership and compensation.</div>
+        </div>
+        <div class="row">
+          <div class="k">Cultural<small>Constraint</small></div>
+          <div class="v">The profession is <em>maternalised</em> — "stability", "long vacations" naturalise the gendered division of labour.</div>
+        </div>
+        <div class="row">
+          <div class="k">Policy<small>Impetus</small></div>
+          <div class="v">Post-<em>Double Reduction</em>: non-teaching tasks ↑ and role conflicts intensified.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 04 / 25</span></footer>
+  </section>
+
+  <!-- 04 · RESEARCH QUESTIONS -->
+  <section class="slide">
+    <div class="label">01 · Research Questions</div>
+    <div class="page-num">05 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Research Questions</h1>
+      <div class="slide-sub">One core question &nbsp;·&nbsp; three sub-questions</div>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(18px,2vw,30px)">
+      <div class="center-statement" style="margin-bottom:clamp(36px,4.5vw,64px);max-width:1220px;align-items:flex-start;text-align:left;gap:0">
+        <div class="lead" style="font-size:clamp(24px,2.2vw,36px);line-height:1.24">
+          How are women primary teachers placed at a <em>bordered position</em> among public teaching, private mothering, and social reproduction — and who bears the institutional cost?
+        </div>
+      </div>
+      <div class="q-grid">
+        <div class="q">
+          <div class="qn">Q1 · Institutional</div>
+          <h3>School–Family Borders</h3>
+          <p>How are responsibility borders moved through collaboration, tutoring, parent communication, and evaluation?</p>
+        </div>
+        <div class="q">
+          <div class="qn">Q2 · Reproductive</div>
+          <h3>Time · Body · Kinship</h3>
+          <p>Once pressure enters the family, how is it redistributed along gendered and intergenerational lines?</p>
+        </div>
+        <div class="q">
+          <div class="qn">Q3 · Affective</div>
+          <h3>Naturalised Emotion</h3>
+          <p>How are patience, empathy, and self-restraint converted into unpaid emotional labour?</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 05 / 25</span></footer>
+  </section>
+
+  <!-- 06 · SECTION DIVIDER · 02 · Research Methodology -->
+  <section class="slide section-divider">
+    <div class="page-num">06 / 25</div>
+    <div class="divider-main">
+      <div class="divider-num">02</div>
+      <div class="divider-rule"></div>
+      <div class="divider-title">Research Methodology</div>
+      <div class="divider-sub">Feminist qualitative case with narrative inquiry: literature review, semi-structured interviews, and participant observation with three women primary teachers in Jiangsu.</div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 06 / 25</span></footer>
+  </section>
+
+  <!-- 07 · METHODS -->
+  <section class="slide">
+    <div class="label">02 · Research Methodology</div>
+    <div class="page-num">07 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Feminist Qualitative Case + Narrative Inquiry</h1>
+      <div class="slide-sub">Hesse-Biber (2014); Riessman (2008); Stake (1995)</div>
+    </div>
+    <div class="content">
+      <div class="methods">
+        <div class="m">
+          <div class="idx">i.</div>
+          <h3>Literature Review</h3>
+          <p><em>86 documents</em> — teacher-mother scholarship, emotional labour, educational maternalisation, Asian developmentalist–neoliberal governance.</p>
+        </div>
+        <div class="m">
+          <div class="idx">ii.</div>
+          <h3>Semi-Structured Interviews</h3>
+          <p><em>3 women primary teachers</em>, Jiangsu; 1–2 interviews each lasting 2h.<br>Daily life, school–family communication, mothering, division of labour, emotional management.</p>
+        </div>
+        <div class="m">
+          <div class="idx">iii.</div>
+          <h3>Participant Observation</h3>
+          <p>Office observation at one focal teacher's school office — school–family communication, fragmented-time use, and teaching / mothering interaction.</p>
+        </div>
+        <div class="m">
+          <div class="idx">iv.</div>
+          <h3>Thematic Analysis</h3>
+          <p>Braun &amp; Clarke (2006). Three recurring themes:</p>
+          <ul class="theme-list">
+            <li>moving school–family borders</li>
+            <li>second shift &amp; care chains</li>
+            <li>maternalised emotional labour</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 07 / 25</span></footer>
+  </section>
+
+  <!-- 06 · PARTICIPANTS -->
+  <section class="slide">
+    <div class="label">02 · Participants</div>
+    <div class="page-num">08 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Three Women Primary Teachers, Jiangsu</h1>
+      <div class="slide-sub">Interviewed and observed between fieldwork sessions.</div>
+    </div>
+    <div class="content">
+      <div class="participants">
+        <div class="p">
+          <div class="name">Zhao<em>Teacher Zhao</em></div>
+          <div class="lab">Position</div>
+          <p>Public primary school; Chinese.</p>
+          <div class="lab">Family</div>
+          <p>Child in transition from kindergarten to primary school.</p>
+        </div>
+        <div class="p">
+          <div class="name">Gong<em>Teacher Gong</em></div>
+          <div class="lab">Position</div>
+          <p>Reassigned from Chinese to Maths after maternity leave.</p>
+          <div class="lab">Family</div>
+          <p>Adult daughter approaching university graduation; majoring in teacher education (师范). Lives with her mother; grandmother manages three meals daily.</p>
+        </div>
+        <div class="p">
+          <div class="name">Yu<em>Teacher Yu</em></div>
+          <div class="lab">Position</div>
+          <p>Top public primary school in Nanjing; Chinese; subject leader + homeroom teacher.</p>
+          <div class="lab">Family</div>
+          <p>Child still at primary stage.</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 08 / 25</span></footer>
+  </section>
+
+  <!-- 09 · SECTION DIVIDER · 03 · Analytical Framework -->
+  <section class="slide section-divider">
+    <div class="page-num">09 / 25</div>
+    <div class="divider-main">
+      <div class="divider-num">03</div>
+      <div class="divider-rule"></div>
+      <div class="divider-title">Analytical Framework</div>
+      <div class="divider-sub">Reading the Chinese primary school through Asian developmentalism–neoliberalism, and three bordering mechanisms that produce the teacher-mother position.</div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 09 / 25</span></footer>
+  </section>
+
+  <!-- 10 · ANALYTICAL FRAME (context) -->
+  <section class="slide">
+    <div class="label">03 · Analytical Framework</div>
+    <div class="page-num">10 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Asian Developmentalism–Neoliberalism</h1>
+      <div class="slide-sub">Adriany (2018); Ong (2006); Park (2007); Wang &amp; Hamid (2024)</div>
+    </div>
+    <div class="content">
+      <div class="center-statement" style="align-items:flex-start;text-align:left;max-width:1280px;gap:clamp(32px,4vw,52px)">
+        <div class="lead">Education is tied to <em>national development</em>, <em>human capital</em>, and <em>family mobility</em>.</div>
+        <div class="flow">
+          <div class="node">State</div>
+          <div class="arrow">→</div>
+          <div class="node">School</div>
+          <div class="arrow">→</div>
+          <div class="node">Market</div>
+          <div class="arrow">→</div>
+          <div class="node">Family</div>
+          <div class="arrow arrow-out">══▶</div>
+          <div class="node node-end">Teacher-Mother<em>time · body · emotion · kinship</em></div>
+        </div>
+        <div class="support" style="font-family:var(--sans);font-style:normal;font-size:clamp(15px,1.25vw,19px);color:var(--muted);line-height:1.55;max-width:1120px;letter-spacing:.01em">
+          After <em style="color:var(--accent);font-style:normal;font-weight:600">Double Reduction</em>, homework, grading, and admission competition are reallocated among state, school, market, and family — ultimately landing on teachers' after-school time and mothers' domestic labour.
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 10 / 25</span></footer>
+  </section>
+
+  <!-- 08 · THREE BORDERING CONCEPTS (Venn) -->
+  <section class="slide">
+    <div class="label">03 · Three Concepts</div>
+    <div class="page-num">11 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Three Bordering Mechanisms</h1>
+      <div class="slide-sub">Together they produce the <em style="font-style:italic">teacher-mother position</em>.</div>
+    </div>
+    <div class="content">
+      <div class="framework-3">
+        <div class="mech m1">
+          <div class="eyebrow">Institutional</div>
+          <h3>Bordering the School</h3>
+          <div class="desc">responsibility expansion</div>
+          <div class="refs">Acker (1990, 2006)<br>Yuval-Davis et&nbsp;al. (2019)</div>
+        </div>
+        <div class="mech m2">
+          <div class="eyebrow">Reproductive</div>
+          <h3>Bordering the Home</h3>
+          <div class="desc">labour relocation</div>
+          <div class="refs">Hochschild &amp; Machung (2012)<br>Fraser (2016); Parreñas (2015)</div>
+        </div>
+        <div class="mech m3">
+          <div class="eyebrow">Affective</div>
+          <h3>Bordering the Emotional</h3>
+          <div class="desc">emotion extraction</div>
+          <div class="refs">Hochschild (2012)<br>Noddings (2013)</div>
+        </div>
+        <div class="converge">
+          <div class="arrows"><span>↘</span><span>↓</span><span>↙</span></div>
+          <div class="node">Teacher-Mother<em>bordered position</em></div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 11 / 25</span></footer>
+  </section>
+
+  <!-- 09 · CENTRAL CLAIM -->
+  <section class="slide">
+    <div class="label">03 · Central Analytical Claim</div>
+    <div class="page-num">12 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">A <em style="font-style:italic;color:var(--accent);font-weight:500">Bordered Position</em> Beyond Role Conflict</h1>
+      <div class="slide-sub">Identity restructuring sediments institutional repositioning rather than psychological growth.</div>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(30px,3vw,44px);gap:clamp(28px,3vw,44px)">
+      <div class="center-statement" style="align-items:flex-start;text-align:left;max-width:1240px;gap:clamp(18px,2vw,28px)">
+        <div class="lead" style="font-size:clamp(26px,2.4vw,38px);line-height:1.24">
+          The reallocation of educational responsibility among <em>school</em>, <em>family</em>, <em>market</em>, and <em>state</em> is lodged in women teachers' <em>time</em>, <em>body</em>, <em>emotion</em>, and <em>kinship</em>.
+        </div>
+      </div>
+      <div class="domain-preview">
+        <div class="domain-head">The three chapters that follow read this claim through three domains:</div>
+        <div class="domains">
+          <div class="d">
+            <div class="d-num">Ch.1</div>
+            <div class="d-name">The School Domain</div>
+            <div class="d-mech">Institutional Bordering</div>
+          </div>
+          <div class="d">
+            <div class="d-num">Ch.2</div>
+            <div class="d-name">The Home Domain</div>
+            <div class="d-mech">Reproductive Bordering</div>
+          </div>
+          <div class="d">
+            <div class="d-num">Ch.3</div>
+            <div class="d-name">The Emotional Domain</div>
+            <div class="d-mech">Affective Bordering</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 12 / 25</span></footer>
+  </section>
+
+  <!-- 13 · SECTION DIVIDER · 04 · Research Findings -->
+  <section class="slide section-divider">
+    <div class="page-num">13 / 25</div>
+    <div class="divider-main">
+      <div class="divider-num">04</div>
+      <div class="divider-rule"></div>
+      <div class="divider-title">Research Findings</div>
+      <div class="divider-sub">Three domains where the teacher-mother's bordered position becomes concrete: the school, the home, and the emotional.</div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 13 / 25</span></footer>
+  </section>
+
+  <!-- 14 · Ch.1 INSTITUTIONAL (Zhao case) -->
+  <section class="slide">
+    <div class="label">04.1 · Institutional Bordering</div>
+    <div class="page-num">14 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">The School Domain</h1>
+      <div class="slide-sub">School–family collaboration expands teacher responsibility beyond teaching.</div>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(24px,2.5vw,36px);gap:clamp(20px,2vw,30px)">
+      <div class="dual-quotes">
+        <div class="qcard">
+          <div class="qcontext">Case A · Teacher Zhao<small>A parent came to Zhao about hitting his 6-year-old son for a "bad behaviour"; Zhao suggested a medical check first.</small></div>
+          <blockquote>I just want to know that, before hitting him, the parent had at least ruled out some physical or developmental reason.</blockquote>
+          <div class="qattr">Teacher Zhao</div>
+          <div class="zh-original">我只是想知道，你打他之前，你先排除一些生理或者发展上的原因吧。</div>
+        </div>
+        <div class="qcard">
+          <div class="qcontext">Case B · Teacher Gong<small>The principal asked her to keep struggling students after class for extra tutoring — unpaid, unscheduled, and never formally required.</small></div>
+          <blockquote>Sometimes when children haven't finished homework, or the weaker ones, we had to keep them after school… all of that is basically an <em style="color:var(--accent);font-style:italic;font-weight:600">obligation</em>.</blockquote>
+          <div class="qattr">Teacher Gong</div>
+          <div class="zh-original">有的时候会有一些孩子的作业没有做好，或者是后进生，我们那时候还要把他留下来……那个都是就相当于义务的。</div>
+        </div>
+      </div>
+      <div class="analysis-strip">
+        <div class="head">What the Data Show</div>
+        <p class="arg">The teacher's legitimate scope silently expands into <em>developmental judgement</em>, <em>family-education intervention</em>, and <em>unpaid after-school compensation</em> — legitimised through the discourse of <em>"obligation"</em> and <em>"the child is in our hands"</em>. No policy authorises this; a single conversation, a message, or a stay-back is enough.</p>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 14 / 25</span></footer>
+  </section>
+
+  <!-- 11 · Ch.2 REPRODUCTIVE (Yu evening + Zhao body) -->
+  <section class="slide">
+    <div class="label">04.2 · Reproductive Bordering</div>
+    <div class="page-num">15 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">The Home Domain — Time &amp; Body</h1>
+      <div class="slide-sub">Home becomes a site where school responsibility and educational labour continue.</div>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(24px,2.5vw,36px);gap:clamp(20px,2vw,30px)">
+      <div class="dual-quotes">
+        <div class="qcard">
+          <div class="qcontext">Case A · Teacher Yu · Time<small>Evenings run non-stop from 17:30 pick-up to past 10pm school work — Yu's own shower is squeezed in only when her child is reading.</small></div>
+          <blockquote>When she takes a shower, I make the bed; when she starts bedtime reading, I <em style="color:var(--accent);font-style:italic;font-weight:600">squeeze in</em> my own shower. After she is fully asleep, I do laundry. After ten, I continue with school work.</blockquote>
+          <div class="qattr">Teacher Yu</div>
+          <div class="zh-original">她洗澡时，我会整理床铺；她开始睡前阅读，我则见缝插针自己洗澡。等到她完全入睡再洗衣服或处理各类家务，十点之后，继续忙学校工作。</div>
+        </div>
+        <div class="qcard">
+          <div class="qcontext">Case B · Teacher Zhao · Body<small>Zhao's postpartum body was on the same institutional clock — during a district-level writing assessment, she had no window to pump milk.</small></div>
+          <blockquote>I couldn't pump milk in time — I felt like I was <em style="color:var(--accent);font-style:italic;font-weight:600">about to run a fever</em>.</blockquote>
+          <div class="qattr">Teacher Zhao</div>
+          <div class="zh-original">来不及吸奶，感觉整个人要发高烧。</div>
+        </div>
+      </div>
+      <div class="analysis-strip">
+        <div class="head">What the Data Show</div>
+        <p class="arg">Home becomes a continuation of school responsibility. Yu's evening compresses children's learning, housework, and school preparation into the same body; her personal time (bathing, rest) becomes the last residue absorbed by everything else. Zhao's postpartum body — pumping, feeding, recovery — is governed by the school timetable. Time and body are <em>reallocated on institutional terms</em> instead of private ones.</p>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 15 / 25</span></footer>
+  </section>
+
+  <!-- 12 · Ch.2 REPRODUCTIVE — Gong care chain -->
+  <section class="slide">
+    <div class="label">04.2 · Reproductive Bordering</div>
+    <div class="page-num">16 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">A Hidden Care Infrastructure in Kinship</h1>
+      <div class="slide-sub">Pressure travels along the <em style="font-style:italic">grandmother – mother – child</em> chain.</div>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(20px,2.2vw,32px);gap:clamp(18px,2vw,28px)">
+      <div class="dual-quotes">
+        <div class="qcard">
+          <div class="qcontext">Case A · The Grandmother<small>Gong's mother, now living with her, took over the three daily meals — freeing Gong for school work by day and companionship at night.</small></div>
+          <blockquote>My mother manages breakfast, lunch, and dinner… In the evening I squeeze out time to be with my girl. Yes — that is our <em style="color:var(--accent);font-style:italic;font-weight:600">division of labour</em>.</blockquote>
+          <div class="qattr">Teacher Gong</div>
+          <div class="zh-original">所有的早上中午，包括晚上这一日三餐都是由我妈妈负责管理……然后晚上我又挤时间陪孩子……然后白天的这个伙食有外婆管理，它有保障，对，就是有这样的分工。</div>
+        </div>
+        <div class="qcard">
+          <div class="qcontext">Case B · The Husband<small>When asked directly, Gong hesitates — then quietly locates all the housework in her own hands, with her husband's abstention explained as skill deficit.</small></div>
+          <blockquote>It's mostly me doing the housework… meals, laundry — basically me. My husband… cooking isn't really his thing. Probably because at home it was always his mother who cooked.</blockquote>
+          <div class="qattr">Teacher Gong</div>
+          <div class="zh-original">好像家务活都是我一个人在干……换洗的衣物基本上都是我在负责……像我老公……吃的东西还是我这边做得多一点，因为他不太会烧，就是他可能原来在家都是他妈妈煮。</div>
+        </div>
+      </div>
+      <div class="analysis-strip">
+        <div class="head">Care Chain</div>
+        <div class="care-chain" style="margin-top:6px;margin-bottom:clamp(14px,1.5vw,20px)">
+          <div class="cnode"><strong>Grandmother</strong><em>meals</em></div>
+          <div class="carrow">→</div>
+          <div class="cnode"><strong>Mother</strong><em>evenings</em></div>
+          <div class="carrow">→</div>
+          <div class="cnode"><strong>Child</strong><em>learning</em></div>
+        </div>
+        <p class="arg">Pressure is displaced <em>along a chain of women</em> — grandmother → mother → daughter. The husband's abstention is naturalised as a skill gap; the grandmother's labour is treated as guaranteed infrastructure. Here, "balance" means identifying who is available to absorb the pressure.</p>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 16 / 25</span></footer>
+  </section>
+
+  <!-- 13 · Ch.3 AFFECTIVE — two quotes -->
+  <section class="slide">
+    <div class="label">04.3 · Affective Bordering</div>
+    <div class="page-num">17 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">The Emotional Domain</h1>
+      <div class="slide-sub">Praise labour &nbsp;·&nbsp; emotion rules</div>
+    </div>
+    <div class="content">
+      <div class="two-quote">
+        <div class="q-row">
+          <div class="q-body">
+            <blockquote>I have to praise every piece of work… So I rack my brain to find something new to say. By the end I almost have nothing left.</blockquote>
+            <div class="zh-original">每个作品我都要夸，我不能大部分孩子夸完之后，留下那几个孩子难过吧，所以我就绞尽脑汁给他们编，说到最后我都要没话说了。</div>
+          </div>
+          <div class="meta">
+            <div class="attr">Teacher Yu</div>
+            <div class="desc">Praise as <em style="color:var(--accent);font-style:normal;font-weight:600">sustained linguistic labour</em>.</div>
+          </div>
+        </div>
+        <div class="q-row">
+          <div class="q-body">
+            <blockquote>You can't have negative emotions… Most importantly, it protects yourself.</blockquote>
+            <div class="zh-original">但是不能有负面的情绪，不能带着情绪去工作……不能带有负面情绪，这样最重要的是保护自己。</div>
+          </div>
+          <div class="meta">
+            <div class="attr">Teacher Gong</div>
+            <div class="desc">Emotional control as <em style="color:var(--accent);font-style:normal;font-weight:600">professional norm and self-protection</em>.</div>
+          </div>
+        </div>
+      </div>
+      <div class="analysis-strip" style="margin-top:clamp(14px,1.5vw,22px)">
+        <div class="head">The Cost</div>
+        <p class="arg">Praise labour and emotion suppression carry real costs. They draw on the same finite reserves of <em>mental focus</em> and <em>physical health</em> that teaching itself demands. What is spent on producing warmth is subtracted from lesson preparation, classroom presence, and the teacher's own body.</p>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 17 / 25</span></footer>
+  </section>
+
+  <!-- 18 · SECTION DIVIDER · 05 · Discussion & Conclusion -->
+  <section class="slide section-divider">
+    <div class="page-num">18 / 25</div>
+    <div class="divider-main">
+      <div class="divider-num">05</div>
+      <div class="divider-rule"></div>
+      <div class="divider-title">Discussion &amp; Conclusion</div>
+      <div class="divider-sub">Four responses — one to each of Q1, Q2, Q3, and the core question — and what must be redrawn across school, family, and society.</div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 18 / 25</span></footer>
+  </section>
+
+  <!-- 19 · 5.1 · Response to Q1 · Institutional Bordering -->
+  <section class="slide">
+    <div class="label">05 · Discussion &amp; Conclusion</div>
+    <div class="page-num">19 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Institutional Bordering</h1>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(16px,1.8vw,26px);gap:clamp(14px,1.5vw,22px)">
+      <div class="flow-3col">
+        <div class="box">
+          <div class="box-head">School</div>
+          <div class="items">
+            <div class="item">School–family collaboration</div>
+            <div class="item">Parental expectations</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="box">
+          <div class="box-head">Border Moves</div>
+          <div class="items">
+            <div class="item with-icon"><span class="icon">◇</span>One conversation</div>
+            <div class="item with-icon"><span class="icon">◇</span>One message</div>
+            <div class="item with-icon"><span class="icon">◇</span>After-school stay-back</div>
+          </div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="box">
+          <div class="box-head">Teacher</div>
+          <div class="items">
+            <div class="item">Developmental judge</div>
+            <div class="item">Parental emotion coordinator</div>
+            <div class="item">After-school compensator</div>
+          </div>
+        </div>
+      </div>
+      <div class="key-insight">
+        <div class="k-label">Key Insight</div>
+        <div class="k-content">
+          <div class="k-en">The teacher's legitimate scope silently extends into developmental judgement, family intervention, and unpaid after-school labour — never authorised, never named as expansion.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 19 / 25</span></footer>
+  </section>
+
+  <!-- 15 · 5.2 · Response to Q2 · Reproductive Bordering -->
+  <section class="slide">
+    <div class="label">05 · Discussion &amp; Conclusion</div>
+    <div class="page-num">20 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Reproductive Bordering</h1>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(16px,1.8vw,26px);gap:clamp(14px,1.5vw,22px)">
+      <div class="stages-3">
+        <div class="stage s1">
+          <div class="num">1</div>
+          <div class="icon">⏱</div>
+          <div class="name">Time</div>
+          <div class="desc">Evenings compress children's learning, housework, and school work.</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="stage s2">
+          <div class="num">2</div>
+          <div class="icon">☖</div>
+          <div class="name">Body</div>
+          <div class="desc">Pregnancy rest, breastfeeding, and post-leave return are governed by the school timetable.</div>
+        </div>
+        <div class="arrow">→</div>
+        <div class="stage s3">
+          <div class="num">3</div>
+          <div class="icon">✥</div>
+          <div class="name">Kinship</div>
+          <div class="desc">Pressure is absorbed along the mother–grandmother chain, forming a hidden care infrastructure.</div>
+        </div>
+      </div>
+      <div class="key-insight">
+        <div class="k-label">Key Insight</div>
+        <div class="k-content">
+          <div class="k-en">The conflict emerges when one regime of social reproduction is absorbed twice into a single woman's time, body, and kinship.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 20 / 25</span></footer>
+  </section>
+
+  <!-- 16 · 5.3 · Response to Q3 · Affective Bordering -->
+  <section class="slide">
+    <div class="label">05 · Discussion &amp; Conclusion</div>
+    <div class="page-num">21 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Affective Bordering</h1>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(16px,1.8vw,26px);gap:clamp(14px,1.5vw,22px)">
+      <div class="split-two">
+        <div>
+          <h4>How the Border Is Built</h4>
+          <ul>
+            <li><span class="li-icon">♡</span><div><div class="li-text">Praise, encouragement, empathy seen as "natural" patience for women.</div></div></li>
+            <li><span class="li-icon">✿</span><div><div class="li-text">Care becomes professional duty; emotional labour becomes unpaid service.</div></div></li>
+            <li><span class="li-icon">☘</span><div><div class="li-text">Maternal experience is absorbed as resource — and returns as over-diagnosis to one's own child.</div></div></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Acts of Redrawing</h4>
+          <ul>
+            <li><span class="li-icon">✓</span><div><div class="li-text">Refusing exchange of evaluation.</div></div></li>
+            <li><span class="li-icon">✓</span><div><div class="li-text">Selectively responding to parents.</div></div></li>
+            <li><span class="li-icon">✓</span><div><div class="li-text">Stepping back from over-questioning.</div></div></li>
+            <li><span class="li-icon">✓</span><div><div class="li-text">Reframing "love" as <em>work that needs recognition</em>.</div></div></li>
+          </ul>
+        </div>
+      </div>
+      <div class="key-insight">
+        <div class="k-label">Key Insight</div>
+        <div class="k-content">
+          <div class="k-en">These acts leave the structure in place while returning invisible emotional labour to a language in which it can be discussed, measured, and redistributed.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 21 / 25</span></footer>
+  </section>
+
+  <!-- 17 · 5.4 · Response to Core Question · Redrawing the Border -->
+  <section class="slide">
+    <div class="label">05 · Discussion &amp; Conclusion</div>
+    <div class="page-num">22 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">Redrawing the Border of Responsibility</h1>
+    </div>
+    <div class="content" style="justify-content:flex-start;padding-top:clamp(16px,1.8vw,26px);gap:clamp(12px,1.4vw,20px)">
+      <div class="core-split">
+        <div class="core-side">
+          <h4>Current Reality</h4>
+          <div class="core-diagram">
+            <svg class="connectors" viewBox="0 0 100 100" preserveAspectRatio="none">
+              <line x1="50" y1="18" x2="50" y2="42" stroke="#B08442" stroke-width=".4" stroke-dasharray="1.2 1.2"/>
+              <line x1="18" y1="82" x2="42" y2="58" stroke="#B08442" stroke-width=".4" stroke-dasharray="1.2 1.2"/>
+              <line x1="82" y1="82" x2="58" y2="58" stroke="#B08442" stroke-width=".4" stroke-dasharray="1.2 1.2"/>
+            </svg>
+            <div class="satellite sat-top">
+              <strong>School</strong>
+              Transfers responsibility
+            </div>
+            <div class="center-node">
+              Teacher-Mother
+            </div>
+            <div class="satellite sat-bl">
+              <strong>Family</strong>
+              Defaults to women
+            </div>
+            <div class="satellite sat-br">
+              <strong>Society &amp; Policy</strong>
+              Hides value of care labour
+            </div>
+          </div>
+        </div>
+        <div class="core-side">
+          <h4>Redraw the Border</h4>
+          <div class="redraw-list">
+            <div class="r-item">
+              <div class="r-icon">⌂</div>
+              <div>
+                <div class="r-label">School</div>
+                <div class="r-en">Redistribute educational responsibility.</div>
+              </div>
+            </div>
+            <div class="r-item">
+              <div class="r-icon">☗</div>
+              <div>
+                <div class="r-label">Family</div>
+                <div class="r-en">Recognise reproductive labour.</div>
+              </div>
+            </div>
+            <div class="r-item">
+              <div class="r-icon">§</div>
+              <div>
+                <div class="r-label">Society &amp; Policy</div>
+                <div class="r-en">Value care as labour rather than feminine virtue.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="key-insight">
+        <div class="k-label">Key Insight</div>
+        <div class="k-content">
+          <div class="k-en">Identity restructuring begins when naturalised care labour becomes something that can be discussed, named, and redistributed; further individual adjustment is no longer the assumed solution.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 22 / 25</span></footer>
+  </section>
+
+  <!-- 15 · CONTRIBUTIONS + LIMITATIONS -->
+  <section class="slide">
+    <div class="label">06 · Contributions &amp; Limitations</div>
+    <div class="page-num">23 / 25</div>
+    <div class="content" style="padding-top:clamp(60px,6vw,100px)">
+      <div class="two-col">
+        <div>
+          <h3>Contributions</h3>
+          <div class="keyword-list">
+            <div class="kw"><div class="term">Reframe</div><div class="val">The teacher-mother is an institutionally bordered position rather than a private role conflict.</div></div>
+            <div class="kw"><div class="term">Name</div><div class="val">Affective bordering names how patience, praise, and self-restraint are pulled from women teachers as unpaid work.</div></div>
+            <div class="kw"><div class="term">Compare</div><div class="val">A situated Chinese case enters dialogue with Korean and Indonesian feminist scholarship.<span>Park (2007); Adriany (2018)</span></div></div>
+            <div class="kw"><div class="term">Redistribute</div><div class="val">Responsibility must be redrawn across school, family, and society.</div></div>
+          </div>
+        </div>
+        <div>
+          <h3>Limits &amp; Future</h3>
+          <div class="keyword-list">
+            <div class="kw"><div class="term">Sample</div><div class="val">Only three teachers in Jiangsu cannot represent regional and structural variation.</div></div>
+            <div class="kw"><div class="term">Method</div><div class="val">The family field relies on self-report, not in-home observation.</div></div>
+            <div class="kw"><div class="term">Scope</div><div class="val">Sino-Korean and Sino-Japanese comparison has not yet been developed.</div></div>
+            <div class="kw"><div class="term">Next</div><div class="val">Affective bordering can extend to other feminised care professions.<span>nursing · ECE · social work</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 23 / 25</span></footer>
+  </section>
+
+  <!-- 16 · REFERENCES -->
+  <section class="slide refs-page">
+    <div class="label">07 · References</div>
+    <div class="page-num">24 / 25</div>
+    <div class="title-band">
+      <h1 class="slide-title">References</h1>
+      <div class="slide-sub">Works cited in this presentation</div>
+    </div>
+    <div class="content">
+      <div class="refs-list">
+        <p>Acker, J. (1990). Hierarchies, jobs, bodies: A theory of gendered organizations. <em>Gender &amp; Society, 4</em>(2), 139–158.</p>
+        <p>Acker, J. (2006). Inequality regimes: Gender, class, and race in organizations. <em>Gender &amp; Society, 20</em>(4), 441–464.</p>
+        <p>Adriany, V. (2018). Neoliberalism and practices of early childhood education in Asia. <em>Policy Futures in Education, 16</em>(1), 3–10.</p>
+        <p>Braun, V., &amp; Clarke, V. (2006). Using thematic analysis in psychology. <em>Qualitative Research in Psychology, 3</em>(2), 77–101.</p>
+        <p>Fraser, N. (2016). Contradictions of capital and care. <em>New Left Review, 100</em>, 99–117.</p>
+        <p>Hesse-Biber, S. N. (Ed.). (2014). <em>Feminist research practice: A primer</em> (2nd ed.). SAGE.</p>
+        <p>Hochschild, A. R. (2012). <em>The managed heart: Commercialization of human feeling</em> (Updated ed.). University of California Press. (Original 1983)</p>
+        <p>Hochschild, A. R., &amp; Machung, A. (2012). <em>The second shift: Working families and the revolution at home</em> (Rev. ed.). Penguin. (Original 1989)</p>
+        <p>Noddings, N. (2013). <em>Caring: A relational approach to ethics and moral education</em> (2nd ed.). University of California Press. (Original 1984)</p>
+        <p>Ong, A. (2006). <em>Neoliberalism as exception: Mutations in citizenship and sovereignty</em>. Duke University Press.</p>
+        <p>Park, S. J. (2007). Educational manager mothers: South Korea's neoliberal transformation. <em>Korea Journal, 47</em>(3), 186–213.</p>
+        <p>Parreñas, R. S. (2015). <em>Servants of globalization: Migration and domestic work</em> (2nd ed.). Stanford University Press.</p>
+        <p>Riessman, C. K. (2008). <em>Narrative methods for the human sciences</em>. SAGE.</p>
+        <p>Stake, R. E. (1995). <em>The art of case study research</em>. SAGE.</p>
+        <p>Wang, L., &amp; Hamid, M. O. (2024). The transformation of neoliberalism: A critical analysis of shadow education governance policy in China. <em>International Journal of Educational Research, 127</em>, 102422.</p>
+        <p>Yuval-Davis, N., Wemyss, G., &amp; Cassidy, K. (2019). <em>Bordering</em>. Polity.</p>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 24 / 25</span></footer>
+  </section>
+
+  <!-- 17 · THANKS / Q&A -->
+  <section class="slide qa">
+    <div class="qa-head">
+      <div class="logo logo-text">Asian Center<br>for Women's Studies</div>
+      <div class="meta">
+        <div class="head-row">ACWS 2026 &nbsp;·&nbsp; Panel 10-4</div>
+        <div class="sub-row">Thank you &nbsp;·&nbsp; Questions &amp; Comments Welcome</div>
+      </div>
+    </div>
+    <a class="back-toc" data-target="1" href="#s1">Contents</a>
+    <div class="qa-main">
+      <h1>Thank&nbsp;you.</h1>
+      <div class="qa-sub">Questions &amp; comments welcome.</div>
+      <div class="qa-rule"></div>
+      <div class="qa-meta"><strong>Zhuo Chang</strong> &nbsp; · &nbsp; MSc, Digital and Social Change &nbsp; · &nbsp; Department of Education, University of Oxford</div>
+    </div>
+    <footer><span></span><span>25 / 25</span></footer>
+  </section>
+
+</div>
+
+<div class="nav">
+  <button id="prev" aria-label="Previous">‹</button>
+  <span class="idx" id="idx">1 / 25</span>
+  <button id="next" aria-label="Next">›</button>
+  <button class="overview-btn" id="ovBtn" aria-label="Overview">Esc · All</button>
+</div>
+<div class="overview-hint">Overview · click any slide to open · press Esc to close</div>
+
 <script>
-(async()=>{
-  const status=document.getElementById('status');
-  const sources=[
-    'https://cdn.jsdelivr.net/gh/changzhuo0200/Bordered-Teacher-Mothers@545e7ef6a54df62da086184f88fba54f52d2b98b/index.html',
-    'https://raw.githubusercontent.com/changzhuo0200/Bordered-Teacher-Mothers/545e7ef6a54df62da086184f88fba54f52d2b98b/index.html'
+  const deck = document.getElementById('deck');
+  const slides = Array.from(deck.querySelectorAll('.slide'));
+  const idxEl = document.getElementById('idx');
+  const N = slides.length;
+  let cur = 0;
+
+  // ── Section map (0-indexed slide ranges) ──
+  const sections = [
+    { num:'01', label:'Background & Questions', start:2,  end:4  },
+    { num:'02', label:'Methodology',            start:5,  end:7  },
+    { num:'03', label:'Framework',              start:8,  end:11 },
+    { num:'04', label:'Findings',               start:12, end:16 },
+    { num:'05', label:'Conclusion',             start:17, end:21 },
+    { num:'06', label:'Contributions',          start:22, end:22 },
+    { num:'07', label:'References',             start:23, end:23 },
   ];
-  async function fetchSource(){
-    let lastErr;
-    for(const url of sources){
-      try{
-        const res=await fetch(url,{cache:'no-store'});
-        if(!res.ok) throw new Error('HTTP '+res.status);
-        return await res.text();
-      }catch(err){ lastErr=err; }
+
+  // ── Inject progress-nav into each content slide ──
+  slides.forEach((slide, i) => {
+    const secIdx = sections.findIndex(s => i >= s.start && i <= s.end);
+    if (secIdx < 0) return;
+    slide.classList.add('has-nav');
+    const nav = document.createElement('div');
+    nav.className = 'progress-nav';
+    sections.forEach((s, si) => {
+      const a = document.createElement('a');
+      a.textContent = s.num;
+      a.title = s.label;
+      a.href = '#s' + s.start;
+      a.dataset.target = s.start;
+      if (si === secIdx) a.classList.add('current');
+      nav.appendChild(a);
+      if (si < sections.length - 1) {
+        const sep = document.createElement('span');
+        sep.className = 'sep';
+        sep.textContent = '·';
+        nav.appendChild(sep);
+      }
+    });
+    slide.appendChild(nav);
+  });
+
+  function go(n){
+    if (document.body.classList.contains('overview')) {
+      document.body.classList.remove('overview');
     }
-    throw lastErr || new Error('Could not fetch presentation package.');
+    cur = Math.max(0, Math.min(N-1, n));
+    deck.style.transform = `translateX(${-cur * 100}vw)`;
+    idxEl.textContent = `${cur+1} / ${N}`;
+    // Re-trigger entry animations
+    slides.forEach(s => s.classList.remove('active'));
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => slides[cur].classList.add('active'));
+    });
   }
-  try{
-    status.textContent='Loading presentation package...';
-    const packed=await fetchSource();
-    const block=(packed.match(/const payload=\[([\s\S]*?)\]\s*\.join\(''\);/)||[])[1];
-    if(!block) throw new Error('Presentation package not found.');
-    const chunks=[...block.matchAll(/'([^']*)'/g)].map(m=>m[1]);
-    const clean=chunks.join('').replace(/[^A-Za-z0-9+/=]/g,'');
-    const binary=atob(clean);
-    const bytes=Uint8Array.from(binary,c=>c.charCodeAt(0));
-    let html;
-    if(window.pako&&window.pako.ungzip){
-      html=new TextDecoder('utf-8').decode(window.pako.ungzip(bytes));
-    }else{
-      if(!('DecompressionStream' in window)) throw new Error('This browser cannot decompress the presentation package.');
-      const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
-      html=await new Response(stream).text();
-    }
-    document.open();
-    document.write(html);
-    document.close();
-  }catch(err){
-    status.innerHTML='Could not load presentation: '+err.message+'<br><br><a href="https://cdn.jsdelivr.net/gh/changzhuo0200/Bordered-Teacher-Mothers@545e7ef6a54df62da086184f88fba54f52d2b98b/index.html">Open fallback package</a>';
-    console.error(err);
+
+  // ── Wire all data-target links (TOC, progress-nav, back-toc) ──
+  document.addEventListener('click', e => {
+    const t = e.target.closest('[data-target]');
+    if (!t) return;
+    e.preventDefault();
+    go(parseInt(t.dataset.target, 10));
+  });
+
+  document.getElementById('prev').onclick = () => go(cur-1);
+  document.getElementById('next').onclick = () => go(cur+1);
+  document.getElementById('ovBtn').onclick = () => toggleOverview();
+
+  function toggleOverview(){
+    document.body.classList.toggle('overview');
   }
-})();
+
+  // ── Overview: click any slide to open it ──
+  slides.forEach((slide, i) => {
+    slide.addEventListener('click', e => {
+      if (!document.body.classList.contains('overview')) return;
+      // Ignore clicks that originated on data-target inner (they'd already fire above)
+      if (e.target.closest('[data-target]')) return;
+      go(i);
+    });
+  });
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { toggleOverview(); return; }
+    if (document.body.classList.contains('overview')) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') go(cur+1);
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') go(cur-1);
+    else if (e.key === 'Home') go(0);
+    else if (e.key === 'End') go(N-1);
+  });
+
+  go(0);
 </script>
 </body>
 </html>
