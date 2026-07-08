@@ -1,0 +1,82 @@
+ed Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 10 / 18</span></footer>
+  </section>
+
+  <!-- 11 · Ch.2 REPRODUCTIVE (Yu schedule) -->
+  <section class="slide">
+    <div class="label">04.2 · Reproductive Bordering</div>
+    <div class="page-num">11 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">The Home Domain — Time, Body, Kinship</h1>
+      <div class="slide-sub">Home is not outside school responsibility; it is where educational labour continues.</div>
+    </div>
+    <div class="content">
+      <div class="schedule-slide">
+        <div class="left">
+          <div class="lab">Case A · Teacher Yu</div>
+          <h3>Evening Time Compressed into a Single Body</h3>
+          <blockquote>"When she takes a shower, I make the bed; when she starts bedtime reading, I squeeze in my own shower. After she is fully asleep, I do laundry. After ten, I continue with school work."</blockquote>
+          <div class="attr">Teacher Yu · Nanjing</div>
+          <div class="zh-original">她洗澡时，我会整理床铺；她开始睡前阅读，我则见缝插针自己洗澡。等到她完全入睡再洗衣服或处理各类家务，十点之后，继续忙学校工作。</div>
+        </div>
+        <div class="right">
+          <div class="row"><div class="t">17:30</div><div class="a">Pick up child from school</div></div>
+          <div class="row"><div class="t">18:00</div><div class="a">Homework supervision &amp; enrichment</div></div>
+          <div class="row"><div class="t">19:30</div><div class="a">Housework (make bed, own shower squeezed in)</div></div>
+          <div class="row"><div class="t">20:30</div><div class="a">Lesson preparation &amp; parent messages</div></div>
+          <div class="row"><div class="t">22:30</div><div class="a">Personal time (rare)</div></div>
+          <div class="note">"Anxiety" is the affective outcome of over-compressed time — not a failure of individual management.</div>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 11 / 18</span></footer>
+  </section>
+
+  <!-- 12 · Ch.2 REPRODUCTIVE — Gong care chain -->
+  <section class="slide">
+    <div class="label">04.2 · Reproductive Bordering</div>
+    <div class="page-num">12 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">A Hidden Care Infrastructure in Kinship</h1>
+      <div class="slide-sub">Pressure travels along the <em style="font-style:italic">grandmother – mother – child</em> chain.</div>
+    </div>
+    <div class="content">
+      <div class="case">
+        <div class="quote-block">
+          <div class="qmark">&ldquo;</div>
+          <blockquote>My mother manages breakfast, lunch, and dinner… In the evening I squeeze out time to be with my girl. Yes — that is our division of labour.</blockquote>
+          <div class="attribution">Teacher Gong</div>
+          <div class="zh-original">所有的早上中午，包括晚上这一日三餐都是由我妈妈负责管理……然后晚上我又挤时间陪孩子……然后白天的这个伙食有外婆管理，它有保障，对，就是有这样的分工。</div>
+        </div>
+        <div class="analysis">
+          <div class="head">Care Chain</div>
+          <div class="care-chain">
+            <div class="cnode"><strong>Grandmother</strong><em>meals</em></div>
+            <div class="carrow">→</div>
+            <div class="cnode"><strong>Mother</strong><em>evenings</em></div>
+            <div class="carrow">→</div>
+            <div class="cnode"><strong>Child</strong><em>learning</em></div>
+          </div>
+          <p class="arg">Home is where social reproduction continues to operate. "Balance" is not even distribution — it is displacement of care along a chain of women.</p>
+        </div>
+      </div>
+    </div>
+    <footer><span>Zhuo Chang</span><span>Bordered Teacher-Mothers</span><span>July 2026 &nbsp;·&nbsp; 12 / 18</span></footer>
+  </section>
+
+  <!-- 13 · Ch.3 AFFECTIVE — two quotes -->
+  <section class="slide">
+    <div class="label">04.3 · Affective Bordering</div>
+    <div class="page-num">13 / 18</div>
+    <div class="title-band">
+      <h1 class="slide-title">The Emotional Domain</h1>
+      <div class="slide-sub">Praise labour &nbsp;·&nbsp; emotion rules</div>
+    </div>
+    <div class="content">
+      <div class="two-quote">
+        <div class="q-row">
+          <div class="q-body">
+            <blockquote>I have to praise every piece of work… So I rack my brain to find something new to say. By the end I almost have nothing left.</blockquote>
+            <div class="zh-original">每个作品我都要夸，我不能大部分孩子夸完之后，留下那几个孩子难过吧，所以我就绞尽脑汁给他们编，说到最后我都要没话说了。</div>
+          </div>
+          <div class="meta">
+            <div 
