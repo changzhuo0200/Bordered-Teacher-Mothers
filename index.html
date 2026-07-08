@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bordered Teacher-Mothers · ACWS 2026 · Zhuo Chang</title>
+<style>html,body{height:100%;margin:0;background:#f4eee2;color:#1f1b16;font:16px Avenir,system-ui,sans-serif;display:grid;place-items:center}.status{max-width:560px;text-align:center;line-height:1.5}.status b{font-family:Georgia,serif;font-size:28px;font-weight:400;display:block;margin-bottom:12px}</style>
+</head>
+<body>
+<div class="status"><b>Bordered Teacher-Mothers</b><span id="status">Loading presentation…</span></div>
+<script>
+(async()=>{
+  const total=16;
+  const files=Array.from({length:total},(_,i)=>`chunks/part-${String(i+1).padStart(2,'0')}.txt`);
+  try{
+    const parts=[];
+    for(const file of files){
+      const res=await fetch(file,{cache:'no-store'});
+      if(!res.ok) throw new Error(file+' '+res.status);
+      parts.push(await res.text());
+    }
+    document.open();
+    document.write(parts.join(''));
+    document.close();
+  }catch(err){
+    document.getElementById('status').textContent='Could not load presentation: '+err.message;
+  }
+})();
+</script>
+</body>
+</html>
